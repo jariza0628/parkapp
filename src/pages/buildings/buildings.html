@@ -3,6 +3,7 @@
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
+  //[{"id_edificio":"1","nombre":"sa","direccion":"asg","ciudad":"f","telefono":"asdf","estado":"1"},
 -->
 <ion-header>
 
@@ -17,9 +18,13 @@
 
 
 <ion-content  class="card-background-page">
-	<ion-card (click)="goToSecondPage()">
+
+ 
+	<ion-card  (click)="goToSecondPage(ed.id_edificio)" *ngFor="let ed of Buildings">
     <img src="assets/img/image.jpg"/>
-    <div class="card-title">Transelca</div>
+    <div class="card-title">{{ ed.nombre }}</div>
     <div class="card-subtitle">41 disponibles</div>
   </ion-card>
+
+
 </ion-content>

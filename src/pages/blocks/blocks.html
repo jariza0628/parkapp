@@ -19,41 +19,16 @@
 
     <ion-list-header>Selecciona un bloque!</ion-list-header>
 
-    <ion-item (click)="goToFloors()">
+    <ion-item (click)="goToFloors()" *ngFor="let bl of block">
       <ion-avatar item-start>
         <img src="assets/img/blocks.png">
       </ion-avatar>
-      <h2>Bloque 1</h2>
+      <h2>{{ bl.numero }}</h2>
       <p>5 Disponibles</p>
       <ion-note item-end>•</ion-note>
     </ion-item>
 
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/blocks.png">
-      </ion-avatar>
-      <h2>Bloque 2</h2>
-      <p>10 Disponibles</p>
-      <ion-note item-end>•</ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/blocks.png">
-      </ion-avatar>
-      <h2>Bloque 3</h2>
-      <p>9 Disponibles</p>
-      <ion-note item-end>•</ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/blocks.png">
-      </ion-avatar>
-      <h2>Bloque 4</h2>
-      <p>2 Disponibles</p>
-      <ion-note item-end>•</ion-note>
-    </ion-item>
+   
 
   </ion-list>
 

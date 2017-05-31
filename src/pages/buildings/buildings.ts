@@ -14,19 +14,31 @@ import { ServicesParkProvider } from '../../providers/services-park/services-par
 @Component({
   selector: 'page-buildings',
   templateUrl: 'buildings.html',
+  providers: [ServicesParkProvider]
 })
 export class BuildingsPage {
+  public Buildings: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public parkService: ServicesParkProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public parkService: ServicesParkProvider
+  ){
+    this.Buildings = [];
   }
 
 
   ionViewDidLoad() {
-  	this.parkService.getRemoteda();
-    //console.log('ionViewDidLoad BuildingsPage');
+  	this.parkService.getRemoteda().subscribe(
+        data => {
+          this.Buildings = (data);
+          console.log(this.Buildings);
+        }
+      );
+    console.log('ionViewDidLoad BuildingsPage');
   }
-  goToSecondPage() {
-    this.navCtrl.push(BlocksPage);
+  goToSecondPage(bildingID) {
+    this.navCtrl.push(BlocksPage, {bildingID: bildingID});
   }
 
 }

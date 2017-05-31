@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FloorsPage } from '../floors/floors';
+import { ServicesParkProvider } from '../../providers/services-park/services-park';
 /**
  * Generated class for the BlocksPage page.
  *
@@ -11,14 +12,25 @@ import { FloorsPage } from '../floors/floors';
 @Component({
   selector: 'page-blocks',
   templateUrl: 'blocks.html',
+  providers: [ServicesParkProvider]
 })
 export class BlocksPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public block: any;
+  public bildingID: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public parkService: ServicesParkProvider) {
+  this.bildingID = this.navParams.get('bildingID');
+  console.log(this.bildingID);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BlocksPage');
+    this.parkService.getBlockByIdbuildind(this.bildingID).subscribe(
+        data => {
+          this.block = (data);
+          //console.log(this.block);
+        }
+      );
+    
   }
   goToFloors() {
     this.navCtrl.push(FloorsPage);

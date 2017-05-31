@@ -10,15 +10,21 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class ServicesParkProvider {
+  public urlApi: string;
 
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
+    //this.urlApi = "http://localhost:8888/api/";
+    this.urlApi = "http://178.62.233.87:8888/api/";
   }
 
   getRemoteda(){
-  	this.http.get('https://www.reddit.com/r/gifs/top/.json?limit=10&sort=hot').subscribe(data =>{
-  		console.log(data);
-  	});
+  	 return this.http.get(this.urlApi + 'buildings')
+     .map(res => res.json())
   }
-
+  
+  getBlockByIdbuildind(BuildinID){
+     return this.http.get(this.urlApi + 'blockByBuilding/'+BuildinID)
+     .map(res => res.json())
+  }
 }
