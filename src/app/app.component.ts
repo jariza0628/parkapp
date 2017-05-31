@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { BuildingsPage } from '../pages/buildings/buildings';
 import { DetailSpacePage } from '../pages/detail-space/detail-space';
+import { MyspacePage } from '../pages/myspace/myspace';
+import { BlankPage } from '../pages/blank/blank';
 @Component({
   templateUrl: 'app.html'
 })
@@ -24,9 +26,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Parqueaderos', component: BuildingsPage },
-      { title: 'Mi espacio', component: ListPage },
-      { title: 'Mi cuenta', component: ListPage },
-      { title: 'Salir', component: ListPage },
+      { title: 'Mi espacio', component: MyspacePage },
+      { title: 'Mi cuenta', component: BlankPage },
+      { title: 'Salir', component: ListPage }
     ];
 
   }

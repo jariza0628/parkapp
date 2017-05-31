@@ -11,6 +11,8 @@ import { BlocksPage } from '../pages/blocks/blocks';
 import { FloorsPage } from '../pages/floors/floors';
 import { SpacesPage } from '../pages/spaces/spaces';
 import { DetailSpacePage } from '../pages/detail-space/detail-space';
+import { MyspacePage } from '../pages/myspace/myspace';
+import { BlankPage } from '../pages/blank/blank';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +29,9 @@ enableProdMode();
     BlocksPage,
     FloorsPage,
     DetailSpacePage,
-    SpacesPage
+    SpacesPage,
+    MyspacePage,
+    BlankPage
     
   ],
   imports: [
@@ -44,7 +48,9 @@ enableProdMode();
     BlocksPage,
     FloorsPage,
     DetailSpacePage,
-    SpacesPage
+    SpacesPage,
+    MyspacePage,
+    BlankPage
     
   ],
   providers: [
