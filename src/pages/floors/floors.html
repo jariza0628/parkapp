@@ -18,41 +18,16 @@
 
     <ion-list-header>Selecciona un Piso!</ion-list-header>
 
-    <ion-item (click)="goToSpaces()">
+    <ion-item (click)="goToSpaces(fl.id_piso)" *ngFor="let fl of floors">
       <ion-avatar item-start>
         <img src="assets/img/blocks.png">
       </ion-avatar>
-      <h2>Piso 1</h2>
+      <h2>{{ fl.numero}}</h2>
       <p>5 Disponibles</p>
       <ion-note item-end>Bloque 1</ion-note>
     </ion-item>
 
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/blocks.png">
-      </ion-avatar>
-      <h2>Piso 2</h2>
-      <p>10 Disponibles</p>
-      <ion-note item-end>Bloque 1</ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/blocks.png">
-      </ion-avatar>
-      <h2>Piso 3</h2>
-      <p>9 Disponibles</p>
-      <ion-note item-end>Bloque 1</ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/blocks.png">
-      </ion-avatar>
-      <h2>Piso 4</h2>
-      <p>2 Disponibles</p>
-      <ion-note item-end>Bloque 1</ion-note>
-    </ion-item>
+   
 
   </ion-list>
 </ion-content>

@@ -19,7 +19,7 @@
 
     <ion-list-header>Selecciona un bloque!</ion-list-header>
 
-    <ion-item (click)="goToFloors()" *ngFor="let bl of block">
+    <ion-item (click)="goToFloors(bl.id_bloque)" *ngFor="let bl of block">
       <ion-avatar item-start>
         <img src="assets/img/blocks.png">
       </ion-avatar>

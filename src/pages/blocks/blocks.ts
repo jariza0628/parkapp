@@ -19,6 +19,7 @@ export class BlocksPage {
   public bildingID: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public parkService: ServicesParkProvider) {
   this.bildingID = this.navParams.get('bildingID');
+  this.block = [];
   console.log(this.bildingID);
   }
 
@@ -32,7 +33,7 @@ export class BlocksPage {
       );
     
   }
-  goToFloors() {
-    this.navCtrl.push(FloorsPage);
+  goToFloors(blockId) {
+    this.navCtrl.push(FloorsPage, {blockId:blockId});
   }
 }

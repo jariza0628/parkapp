@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DetailSpacePage } from '../detail-space/detail-space';
+import { ServicesParkProvider } from '../../providers/services-park/services-park';
 /**
  * Generated class for the SpacesPage page.
  *
@@ -11,16 +12,22 @@ import { DetailSpacePage } from '../detail-space/detail-space';
 @Component({
   selector: 'page-spaces',
   templateUrl: 'spaces.html',
+  providers: [ ServicesParkProvider ]
 })
 export class SpacesPage {
+  public floorId: any;
+  public spaces: any;
+
   icons: "car";	
   items: Array<{title: string, icon: string}>;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  	// If we navigated to this page, we will have an item available as a nav param
-    //this.selectedItem = navParams.get('item');
 
-    // Let's populate this page with some filler content for funzies
-   
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public parkService: ServicesParkProvider) 
+  {
+    this.spaces = [];
+    this.floorId = this.navParams.get('floorId');
 
     this.items = [];
     for (let i = 1; i < 10; i++) {
@@ -33,10 +40,17 @@ export class SpacesPage {
   }
 
   ionViewDidLoad() {
+    this.parkService.getSpacesByfloorId(this.floorId).subscribe(
+        data => {
+          this.spaces = (data);
+          console.log(this.floorId);
+        }
+      );
+
     console.log('ionViewDidLoad SpacesPage');
   }
-  goToSpaces() {
-    this.navCtrl.push(DetailSpacePage);
+  goToSpaces(spaceId) {
+    this.navCtrl.push(DetailSpacePage, {spaceId:spaceId});
   }
 
 }

@@ -44,31 +44,19 @@
     </p>
   </ion-card-content>
   </ion-card>
+
   <ion-list>
   <ion-list-header>
     Disponibles Hoy
   </ion-list-header>
-  <ion-item>
-    <ion-avatar item-left>
+  <ion-item (click)="goToBlocks()" *ngFor="let fs of spacesFree">
+    <ion-avatar item-left >
       <img src="assets/img/car.png">
     </ion-avatar>
-    <h2>Espacio 1</h2>
+    <h2>{{fs.nombre}}</h2>
     <p>Disponibles</p>
   </ion-item>
-  <ion-item>
-    <ion-avatar item-left>
-      <img src="assets/img/car.png">
-    </ion-avatar>
-    <h2>Espacio 2</h2>
-    <p>Disponibles</p>
-  </ion-item>
-  <ion-item>
-    <ion-avatar item-left>
-      <img src="assets/img/car.png">
-    </ion-avatar>
-    <h2>Espacio 5</h2>
-    <p>Disponibles</p>
-  </ion-item>
+  
 </ion-list>
  <button ion-button full color="danger">Desbloquear Espacio</button>
  

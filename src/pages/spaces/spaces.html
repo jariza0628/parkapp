@@ -16,12 +16,14 @@
 <ion-content padding>
 	<ion-list >
 	<ion-list-header>Espacios disponibles</ion-list-header>
-    <button ion-item *ngFor="let item of items" (click)="goToSpaces()">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
+
+    <button ion-item *ngFor="let spf of spaces" (click)="goToSpaces(spf.espacioid)">
+      <ion-icon  item-left></ion-icon>
+      {{spf.nombre}}
       <div class="item-note" item-right>
-        {{item.note}}
+        {{spf.nombrepiso}}
       </div>
     </button>
+
   </ion-list>
 </ion-content>
