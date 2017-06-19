@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DetailSpacePage } from '../detail-space/detail-space';
 import { ServicesParkProvider } from '../../providers/services-park/services-park';
 /**
@@ -17,6 +17,7 @@ import { ServicesParkProvider } from '../../providers/services-park/services-par
 export class SpacesPage {
   public floorId: any;
   public spaces: any;
+  public loader: any;
 
   icons: "car";	
   items: Array<{title: string, icon: string}>;
@@ -24,10 +25,14 @@ export class SpacesPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
-    public parkService: ServicesParkProvider) 
+    public parkService: ServicesParkProvider,
+    public loading: LoadingController) 
   {
     this.spaces = [];
     this.floorId = this.navParams.get('floorId');
+    this.loader = this.loading.create({
+      content: "Cargando..."
+    });
 
     this.items = [];
     for (let i = 1; i < 10; i++) {
@@ -40,10 +45,12 @@ export class SpacesPage {
   }
 
   ionViewDidLoad() {
+    this.loader.present();
     this.parkService.getSpacesByfloorId(this.floorId).subscribe(
         data => {
           this.spaces = (data);
           console.log(this.floorId);
+          this.loader.dismiss();
         }
       );
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FloorsPage } from '../floors/floors';
+
 
 /**
  * Generated class for the BlankPage page.

@@ -13,17 +13,24 @@
 </ion-header>
 
 
-<ion-content padding>
-	<ion-list >
-	<ion-list-header>Espacios disponibles</ion-list-header>
+<ion-content class="list-avatar-page">
 
-    <button ion-item *ngFor="let spf of spaces" (click)="goToSpaces(spf.espacioid)">
-      <ion-icon  item-left></ion-icon>
-      {{spf.nombre}}
-      <div class="item-note" item-right>
-        {{spf.nombrepiso}}
-      </div>
-    </button>
+<ion-list>
+
+    <ion-list-header>Espacios disponibles ahora!</ion-list-header>
+
+    <ion-item *ngFor="let spf of spaces" (click)="goToSpaces(spf.espacioid)">
+      <ion-avatar item-start>
+        <img src="assets/img/blocks.png">
+      </ion-avatar>
+      <h2>Espacio N°: {{spf.nombre}}</h2>
+      <p>Piso {{spf.nombrepiso}}</p>
+      <ion-note item-end>•</ion-note>
+    </ion-item>
+
+   
 
   </ion-list>
+
+	
 </ion-content>

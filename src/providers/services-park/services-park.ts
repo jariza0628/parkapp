@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+
 
 /*
   Generated class for the ServicesParkProvider provider.
@@ -14,8 +15,8 @@ export class ServicesParkProvider {
 
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-    this.urlApi = "http://slimapp/api/";
-    //this.urlApi = "http://178.62.233.87:8888/api/";
+    //this.urlApi = "http://slimapp/api/";
+    this.urlApi = "http://www.parkapp.me/api/";
   }
 
   getRemoteda(){
@@ -43,5 +44,92 @@ export class ServicesParkProvider {
   getSpace(SpaceID){
     return this.http.get(this.urlApi + 'space/'+SpaceID)
     .map(res => res.json())
+  }
+  getNumSpaceFreeToday(IdBuilding){
+    return this.http.get(this.urlApi + 'freeSpacesByBuilding/'+IdBuilding)
+    .map(res => res.json())
+  }
+
+   getNumSpace(IdBuilding){
+    return this.http.get(this.urlApi + 'SpacesByBuilding/'+IdBuilding)
+    .map(res => res.json())
+  }
+   getSpacesWhithCalendarFree(spaceId){
+     return this.http.get(this.urlApi + 'SpacesWhithCalendarFree/'+spaceId)
+     .map(res => res.json())
+  }
+    getDaysFreeByUser(idUser){
+     return this.http.get(this.urlApi + 'daysFreeByUser/'+idUser)
+     .map(res => res.json())
+  }
+   freeSpace(info){//recibe un string con 2 fechas y el usuario se separa con php en el servidor
+     return new Promise(
+      resolve=>{
+        this.http.get(this.urlApi + 'freeSpace/'+info)
+        .map(res => res.json())
+        .subscribe((data1) => {
+                 resolve(data1)
+          },
+          err=>{
+            console.log(err);
+          }
+        )
+      }
+    );
+   
+  }
+ 
+   unlockspace(spaceId){
+    return new Promise(
+      resolve=>{
+        this.http.delete(this.urlApi + 'delSpaceTmp/delete/'+spaceId)
+        .map(res => res.json())
+        .subscribe((data1) => {
+                 resolve(data1)
+          },
+          err=>{
+            console.log(err);
+          }
+        )
+      }
+    );
+  }
+   DelFreeSpace(idcalendar){
+    return new Promise(
+      resolve=>{
+        this.http.delete(this.urlApi + 'FreeDayByUser/delete/'+idcalendar)
+        .map(res => res.json())
+        .subscribe((data1) => {
+                 resolve(data1)
+          },
+          err=>{
+            console.log(err);
+          }
+        )
+      }
+    );
+  }
+  sendinfo(iduser,id){
+     let headers = new Headers();
+     headers.append('Content-Type', 'application/json');
+
+    let body = JSON.stringify({
+        iduser: iduser,
+        id: id
+    });
+
+ return new Promise(
+      resolve=>{
+        this.http.post(this.urlApi + 'save/space', JSON.parse(body), {headers: headers})
+     .map(res => res.json())
+        .subscribe((data1) => {
+                 resolve(data1)
+          },
+          err=>{
+            console.log(err);
+          }
+        )
+      }
+    );
   }
 }

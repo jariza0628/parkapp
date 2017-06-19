@@ -15,20 +15,23 @@
 </ion-header>
 
 <ion-content >
+	 <ion-refresher (ionRefresh)="doRefresh($event)">
+	    <ion-refresher-content></ion-refresher-content>
+	 </ion-refresher>
 
 	<ion-card>
 		<ion-card-header>
-			Espacio #1
+			Liberar mi espacio
 		</ion-card-header>
 
 		<ion-list>
 			<button ion-item>
 				<ion-icon name="car" item-left></ion-icon>
-				Shopping
+				Selecciona un rango de fechas
 			</button>
 		</ion-list>
 	</ion-card>
-	<button ion-button full color="danger">Liberar HOY</button>
+	
 	<ion-card>
 		<ion-card-header>
 			<ion-title>Libera tu espacio el día</ion-title>
@@ -37,25 +40,25 @@
 			<ion-list>
 				<ion-item>
 					<ion-label>Fecha de inicio</ion-label>
-					<ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.month"></ion-datetime>
+					<ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="myDate"></ion-datetime>
 				</ion-item>
 
 				<ion-list>
 					<ion-item>
 						<ion-label>Jornada</ion-label>
-						<ion-select [(ngModel)]="gaming">
-							<ion-option value="0">MAÑANA 8 - 12</ion-option>
-							<ion-option value="1">TARDE 14 - 18</ion-option>
-							<ion-option value="3s">TODO EL DIA</ion-option>
+						<ion-select [(ngModel)]="jornada" required>
+							<ion-option value="0">TODO EL DIA</ion-option>
+							<ion-option value="1">MAÑANA 8 - 12</ion-option>
+							<ion-option value="2">TARDE 14 - 18</ion-option>
 						</ion-select>
 					</ion-item>
 				</ion-list>
 				<ion-item>
 					<ion-label>Fecha fin</ion-label>
-					<ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.timeEnds"></ion-datetime>
+					<ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="myDate2"></ion-datetime>
 				</ion-item>
 			</ion-list>
-			<button ion-button color="danger">Liberar</button>
+			<button ion-button color="danger" type="submit" (click)="fecha(jornada)">Liberar</button>
 		</ion-card-content>
 	</ion-card>
 	<ion-list>
@@ -63,7 +66,7 @@
     		Días libres
   		</ion-list-header>
 
-	  <ion-item>
+	  <ion-item *ngFor = "let fs of FreeDays">
 	     <ion-row>
 		    <ion-col col-auto>
 		      <ion-avatar item-left>
@@ -71,34 +74,17 @@
 			    </ion-avatar>
 		    </ion-col>
 		    <ion-col >
-		      <h2> 20 Junio 2017</h2>
-	    <p>MAÑANA 8 - 12</p>
+		      <h2>Fecha: {{fs.dia}}-{{fs.mes}}-{{fs.anio}}</h2>
+	    <p>{{fs.horario}}</p>
 		    </ion-col>
 		    <ion-col col-auto style="float: right;">
-		       <button ion-button icon-only clear>
+		       <button ion-button icon-only clear (click)="DelFreeSpace(fs.id_calendario)">
 		  <ion-icon name="trash"></ion-icon>
 		</button>
 		    </ion-col>
 		  </ion-row>
 	  </ion-item>
- <ion-item>
-	     <ion-row>
-		    <ion-col col-auto>
-		      <ion-avatar item-left>
-			      <img src="assets/img/car.png">
-			    </ion-avatar>
-		    </ion-col>
-		    <ion-col >
-		      <h2> 20 Junio 2017</h2>
-	    <p>TARDE 8 - 12</p>
-		    </ion-col>
-		    <ion-col col-auto style="float: right;">
-		       <button ion-button icon-only clear>
-		  <ion-icon name="trash"></ion-icon>
-		</button>
-		    </ion-col>
-		  </ion-row>
-	  </ion-item>
+
 	</ion-list>
 </ion-content>
 <style>

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,12 +14,16 @@ import { SpacesPage } from '../pages/spaces/spaces';
 import { DetailSpacePage } from '../pages/detail-space/detail-space';
 import { MyspacePage } from '../pages/myspace/myspace';
 import { BlankPage } from '../pages/blank/blank';
+import { LoginPage } from '../pages/login/login';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ServicesParkProvider } from '../providers/services-park/services-park';
  
 import {enableProdMode} from '@angular/core';
+import { AuthProvider } from '../providers/auth/auth';
+import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
 enableProdMode();
 @NgModule({
   declarations: [
@@ -31,13 +36,15 @@ enableProdMode();
     DetailSpacePage,
     SpacesPage,
     MyspacePage,
-    BlankPage
+    BlankPage,
+    LoginPage
     
   ],
   imports: [
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,14 +57,18 @@ enableProdMode();
     DetailSpacePage,
     SpacesPage,
     MyspacePage,
-    BlankPage
+    BlankPage,
+    LoginPage
     
   ],
   providers: [
+    IonicStorageModule,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ServicesParkProvider
+    ServicesParkProvider,
+    AuthProvider,
+    VarsGlobalsProvider
   ]
 })
 export class AppModule {}

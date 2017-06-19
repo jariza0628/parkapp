@@ -2,13 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { BuildingsPage } from '../pages/buildings/buildings';
-import { DetailSpacePage } from '../pages/detail-space/detail-space';
 import { MyspacePage } from '../pages/myspace/myspace';
-import { BlankPage } from '../pages/blank/blank';
+import { LoginPage } from '../pages/login/login';
+
+import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
 @Component({
   templateUrl: 'app.html'
 })
@@ -16,20 +15,27 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-
+  public glo: string;
   pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  pages2: Array<{title: string, component: any}>;
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public varsGlobals: VarsGlobalsProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
+   
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Parqueaderos', component: BuildingsPage },
-      { title: 'Mi espacio', component: MyspacePage },
-      { title: 'Mi cuenta', component: BlankPage },
-      { title: 'Salir', component: ListPage }
+      { title: 'Mi espacio', component: MyspacePage }
+     
     ];
+      this.pages2 = [
+      { title: 'Home', component: HomePage },
+      { title: 'Parqueaderos', component: BuildingsPage },
+      { title: 'Login', component: LoginPage }
+      
+    ];
+    this.glo = "uni";
 
   }
 

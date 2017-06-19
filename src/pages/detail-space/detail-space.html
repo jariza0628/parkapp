@@ -20,12 +20,24 @@
 			<img src="assets/img/car.png">
 		</div>
 	</div>
+  <ion-grid>
+    <h2>Ubicacion</h2>
+    <ion-row>
+        <ion-col>Piso: {{ space.piso}}</ion-col>
+        <ion-col>Bloque: {{ space.bloque}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="color: green">Puesto: {{space.numero}}</ion-col>
+    </ion-row>
+    
+  </ion-grid>
+
 	<ion-list>
   <ion-list-header>
-    Disponivilidad de hoy {{nombre}}
+    Disponivilidad de hoy 
   </ion-list-header>
-  <ion-item>Jornada Mañana <button ion-button color="secondary" class="derecha">Utilizar</button></ion-item>
-  <ion-item>Jornada Tarde <button ion-button color="secondary" class="derecha">Utilizar</button></ion-item>
+  <ion-item>{{space.horario}} <button ion-button color="secondary" class="derecha" (click)="saveinfo(1,space.id_espacio)" *ngIf="tiporol=='3' ">Utilizar</button></ion-item>
+ 
   
 </ion-list>
 
