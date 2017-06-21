@@ -31,6 +31,7 @@ export class MyspacePage {
   public userID: string;
   public FreeDays: any;
   public loader: any;
+  public user: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams, 
@@ -51,6 +52,7 @@ export class MyspacePage {
     this.jornada = "0";
     this.userID= "000";
     this.FreeDays = [];
+    this.user = 0;
     this.loader = this.loading.create({
       content: "Cargando..."
     });
@@ -63,9 +65,11 @@ export class MyspacePage {
     timeEnds: '2017-02-20'
   }
   ionViewDidLoad() {
+    this.user = this.varsGlobals.getUserId();
      this.loader.present();
     console.log('ionViewDidLoad MyspacePage');
-      this.parkService.getDaysFreeByUser(this.varsGlobals.getUserId).subscribe(
+    console.log('MyspacePage iduser '+this.user);
+      this.parkService.getDaysFreeByUser(this.user).subscribe(
         data => {
           this.FreeDays = (data);
           console.log(this.FreeDays);
@@ -117,7 +121,7 @@ export class MyspacePage {
     console.log('Begin async operation', refresher);
 
     setTimeout(() => {
-      this.parkService.getDaysFreeByUser(this.varsGlobals.getUserId).subscribe(
+      this.parkService.getDaysFreeByUser(this.varsGlobals.getUserId()).subscribe(
         data => {
           this.FreeDays = (data);
           console.log(this.FreeDays);
@@ -129,7 +133,7 @@ export class MyspacePage {
   recargar(){
 
      setTimeout(() => {
-      this.parkService.getDaysFreeByUser(this.varsGlobals.getUserId).subscribe(
+      this.parkService.getDaysFreeByUser(this.varsGlobals.getUserId()).subscribe(
         data => {
           this.FreeDays = (data);
           console.log(this.FreeDays);

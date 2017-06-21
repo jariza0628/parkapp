@@ -17,7 +17,8 @@ import 'rxjs/add/operator/map';
   	private utilizalugar;
   	public urlApi: string;
   	private rol: any;
-
+    private usuario: any;
+    private utilizando: any;
   	constructor(public http: Http,public alertCtrl: AlertController) {
   		console.log('Hello VarsGlobalsProvider Provider');
   		this.userId = 0;
@@ -35,12 +36,26 @@ import 'rxjs/add/operator/map';
   		return this.userId;
   	}
 
+    setUsuario(value){
+      this.usuario = value;
+    }
+    getUsuario(){
+      return this.usuario;
+    }
+
   	setrol(value){
   		this.rol = value;
   	}
   	getrol(){
   		return this.rol;
   	}
+
+    setutilizando(value){
+      this.utilizando = value;
+    }
+    getutilizando(){
+      return this.utilizando;
+    }
 
 
   	setbuildingId(value){

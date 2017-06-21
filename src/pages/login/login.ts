@@ -60,6 +60,7 @@ export class LoginPage {
   					resolve(data1);
   					this.datas(data1);
   					this.VarsGlobals.setUserId(data1.id_usuario);
+            this.VarsGlobals.setUsuario(email);
   				},
   				err=>{
   					console.log(err);
@@ -87,12 +88,12 @@ export class LoginPage {
   			this.VarsGlobals.setbuildingId(1);//solo transelca edificio
   			this.VarsGlobals.setrol(data.rol);
   			this.ionViewDidEnter();
-  			this.goToHome(data.id_usuario, data.rol);
+  			this.goToHome(data.id_usuario, data.rol, data.nombre +" "+data.apellido);
 
   		}
   	}
-  	goToHome(id_usuario, rol){
-  		this.navCtrl.setRoot(HomePage, {id_usuario:id_usuario, rol:rol});
+  	goToHome(id_usuario, rol,nombre){
+  		this.navCtrl.setRoot(HomePage, {id_usuario:id_usuario, rol:rol, nombre: nombre});
   	}
 
 }

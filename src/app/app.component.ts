@@ -6,6 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { BuildingsPage } from '../pages/buildings/buildings';
 import { MyspacePage } from '../pages/myspace/myspace';
 import { LoginPage } from '../pages/login/login';
+import { BlankPage } from '../pages/blank/blank';
 
 import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
 @Component({
@@ -15,9 +16,10 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-  public glo: string;
+
   pages: Array<{title: string, component: any}>;
   pages2: Array<{title: string, component: any}>;
+  pages3: Array<{title: string, component: any}>;
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public varsGlobals: VarsGlobalsProvider) {
     this.initializeApp();
 
@@ -26,6 +28,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Parqueaderos', component: BuildingsPage },
+      //{ title: 'Mi Perfil', component: BuildingsPage },
       { title: 'Mi espacio', component: MyspacePage }
      
     ];
@@ -35,7 +38,12 @@ export class MyApp {
       { title: 'Login', component: LoginPage }
       
     ];
-    this.glo = "uni";
+     this.pages3 = [
+      { title: 'Home', component: HomePage },
+      { title: 'Parqueaderos', component: BuildingsPage }
+     
+      
+    ];
 
   }
 

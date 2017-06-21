@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { HomePage } from '../home/home';
 import { ServicesParkProvider } from '../../providers/services-park/services-park';
 import { VarsGlobalsProvider } from '../../providers/vars-globals/vars-globals';
 /**
@@ -19,6 +20,7 @@ export class DetailSpacePage {
   public space: any;
   public nombre: any;
   public tiporol: any;
+  public utlizando: any;
   
   constructor(
   	public navCtrl: NavController, 
@@ -31,17 +33,27 @@ export class DetailSpacePage {
 
   	this.spaceId = this.navParams.get('spaceId');
   	this.nombre = "Jeffer";
+    this.utlizando = "no";
   }
 
   saveinfo(iduser, id){  
     
     console.log("espacio "+id);
+    this.utlizando = "si";
     this.parkService.sendinfo(this.varsGlobals.getUserId(),id);
      this.showAlert() ;
-
+     this.goToHome(this.utlizando,this.varsGlobals.getUserId(), this.varsGlobals.getrol(), this.varsGlobals.getUsuario());
+    
   }
 
+  goToHome(utlizando, id_usuario, rol,nombre){
+      this.navCtrl.setRoot(HomePage, {utlizando:utlizando, id_usuario:id_usuario, rol:rol, nombre: nombre});
+    }
+
+    
   ionViewDidLoad() {
+     console.log("userid: "+this.varsGlobals.getUserId());
+    console.log("rol: "+this.varsGlobals.getrol());
     this.tiporol = this.varsGlobals.getrol();
     console.log(this.tiporol);
   	this.parkService.getSpacesWhithCalendarFree(this.spaceId).subscribe(

@@ -1,7 +1,5 @@
 
 <ion-menu [content]="content" id="menu1">
-  
-
   <ion-content>
     <div style=" background-image: url('assets/img/menu.jpg');height: 150px;background-size: cover;">
       <div style="float: left;" padding>
@@ -11,19 +9,15 @@
         MENU
       </div>
     </div>
-    
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages2" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>
   </ion-content>
-
 </ion-menu>
 
 <ion-menu [content]="content" id="menu2">
-  
-
   <ion-content>
     <div style=" background-image: url('assets/img/menu.jpg');height: 150px;background-size: cover;">
       <div style="float: left;" padding>
@@ -33,14 +27,31 @@
         MENU
       </div>
     </div>
-    
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>
   </ion-content>
+</ion-menu>
 
+<ion-menu [content]="content" id="menu3">
+    <ion-content>
+    <div style=" background-image: url('assets/img/menu.jpg');height: 150px;background-size: cover;">
+      <div style="float: left;" padding>
+        <img src="assets/img/icon.png" width="130" height="120">
+      </div>
+      <div style="float: right;font-size:20px; color: white " padding>
+        MENU
+      </div>
+    </div>
+   
+    <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages3" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
