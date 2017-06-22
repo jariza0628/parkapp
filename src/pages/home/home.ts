@@ -27,6 +27,8 @@ export class HomePage {
   public usuario: any;
   public nombre:any;
   public utlizando:any;
+  public userutilizaspace: any;
+  public id_space: any;
   constructor(
   	public navCtrl: NavController, 
   	public navParams: NavParams, 
@@ -40,12 +42,14 @@ export class HomePage {
 
   {
   	this.spacesFree = [];
+    this.userutilizaspace =[];
     this.loader = this.loading.create({
       content: "Cargando..."
     });
     this.utilizalugar = 0;
     this.platform = platform;
     this.user = this.navParams.get('id_usuario');
+    this.rol = this.navParams.get('rol');
     this.rol = this.navParams.get('rol');
     this.userId = this.varsGlobals.getUserId();
     this.nombre = this.navParams.get('nombre');
@@ -63,6 +67,7 @@ export class HomePage {
 
   services(){
      //mostrar varibles
+     this.userutilizaspace = null;
     this.varsGlobals.setUsuario(this.nombre);
     this.nombre = this.varsGlobals.getUsuario();
     console.log("nombre:"+this.nombre);
@@ -73,12 +78,38 @@ export class HomePage {
     if (this.rol!=null){
       this.varsGlobals.setUserId(this.user);
       this.varsGlobals.setrol(this.rol);
+
       this.userId = this.varsGlobals.getUserId();
     }
     if(this.varsGlobals.getrol()==2 ){//si es dueño de parqueadero mostrar mi espacio en menu
       this.menu.enable(false, 'menu1');
       this.menu.enable(false, 'menu3');
       this.menu.enable(true, 'menu2');
+
+         this.varsGlobals.idSpaceByuser(this.user).subscribe(
+          data => {
+            this.id_space = data.id_espacio;
+            if(this.id_space!=null){
+              this.varsGlobals.setIdSpace(this.id_space);
+            }
+            
+
+          }
+         );
+          setTimeout(() => {
+           
+                if(this.id_space==null){
+                  this.id_space = this.varsGlobals.getIdSpace();
+                }
+                console.log("id space mio: "+this.id_space);
+               this.varsGlobals.getOccupiedWhy(this.id_space).subscribe(
+                data => {
+                  this.userutilizaspace = data.nombre;
+                  console.log(this.userutilizaspace);
+                } );
+          }, 500);
+        
+        
       
     }
     if(this.varsGlobals.getrol()==3 ){//si es dueño de parqueadero mostrar mi espacio en menu
@@ -109,6 +140,7 @@ export class HomePage {
         this.utilizalugar = this.varsGlobals.getUtilizalugar();
       }
       );
+ 
     this.parkService.getSpaceFreeToday().subscribe(
       data => {
         this.spacesFree = (data);

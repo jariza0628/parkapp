@@ -57,7 +57,12 @@
   </ion-row>
   
 </ion-grid>
-
+  <ion-row paddig0 *ngIf="userutilizaspace!=null">
+    <ion-col col paddig0 style="color: #fd8585; font-size: 16px;padding-left: 10px;">
+      Puesto ocupado por: {{ userutilizaspace }}
+    </ion-col>
+  </ion-row>
+  
   <ion-list >
   <ion-list-header>
     Disponibles Hoy

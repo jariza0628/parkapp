@@ -19,6 +19,7 @@ import 'rxjs/add/operator/map';
   	private rol: any;
     private usuario: any;
     private utilizando: any;
+    private id_myspace: any;//id del espacio de usuario
   	constructor(public http: Http,public alertCtrl: AlertController) {
   		console.log('Hello VarsGlobalsProvider Provider');
   		this.userId = 0;
@@ -35,6 +36,13 @@ import 'rxjs/add/operator/map';
   	getUserId(){
   		return this.userId;
   	}
+
+    setIdSpace(value){
+      this.id_myspace = value;
+    }
+    getIdSpace(){
+      return this.id_myspace;
+    }
 
     setUsuario(value){
       this.usuario = value;
@@ -78,6 +86,15 @@ import 'rxjs/add/operator/map';
   		.map(res => res.json());
 
   	}
+    getOccupiedWhy(idSpace){
+      return this.http.get(this.urlApi + 'MySpacesOccupiedByUser/'+idSpace)
+      .map(res => res.json());
+
+    }
+    idSpaceByuser(iduser){
+      return this.http.get(this.urlApi + 'idSpaceByuser/'+iduser)
+      .map(res => res.json());
+    }
   	
 
   

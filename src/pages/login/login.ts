@@ -49,9 +49,6 @@ export class LoginPage {
   login(email,clave){
   		let headers = new Headers();
   		headers.append('Content-Type', 'application/json');
-
-  		
-
   		return new Promise(
   			resolve=>{
   				this.http.get(this.VarsGlobals.urlApi + 'log/'+email+'/'+clave)
