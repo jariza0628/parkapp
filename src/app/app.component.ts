@@ -28,18 +28,20 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Parqueaderos', component: BuildingsPage },
-      //{ title: 'Mi Perfil', component: BuildingsPage },
+      { title: 'Mi Perfil', component: BlankPage },
       { title: 'Mi espacio', component: MyspacePage }
      
     ];
       this.pages2 = [
       { title: 'Home', component: HomePage },
       { title: 'Parqueaderos', component: BuildingsPage },
+      //{ title: 'Mi Perfil', component: BlankPage },
       { title: 'Login', component: LoginPage }
       
     ];
      this.pages3 = [
       { title: 'Home', component: HomePage },
+      { title: 'Mi Perfil', component: BlankPage },
       { title: 'Parqueaderos', component: BuildingsPage }
      
       

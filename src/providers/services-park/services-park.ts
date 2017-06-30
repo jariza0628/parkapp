@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import 'rxjs/add/operator/toPromise';
 
 /*
   Generated class for the ServicesParkProvider provider.
@@ -15,8 +15,8 @@ export class ServicesParkProvider {
 
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-    //this.urlApi = "http://slimapp/api/";
-    this.urlApi = "http://www.parkapp.me/api/";
+    this.urlApi = "http://slimapp/api/";
+    //this.urlApi = "http://www.parkapp.me/api/";
   }
 
   getRemoteda(){
@@ -56,6 +56,14 @@ export class ServicesParkProvider {
   }
    getSpacesWhithCalendarFree(spaceId){
      return this.http.get(this.urlApi + 'SpacesWhithCalendarFree/'+spaceId)
+     .map(res => res.json())
+  }
+     getUser(UserId){
+     return this.http.get(this.urlApi + 'User/'+UserId)
+     .map(res => res.json())
+  }
+    getMd5(pass){
+     return this.http.get(this.urlApi + 'md5/'+pass)
      .map(res => res.json())
   }
     getDaysFreeByUser(idUser){
@@ -121,6 +129,30 @@ export class ServicesParkProvider {
  return new Promise(
       resolve=>{
         this.http.post(this.urlApi + 'save/space', JSON.parse(body), {headers: headers})
+     .map(res => res.json())
+        .subscribe((data1) => {
+                 resolve(data1)
+          },
+          err=>{
+            console.log(err);
+          }
+        )
+      }
+    );
+  }
+
+   cambiarcontrasena(id_usuario,clave){
+     let headers = new Headers();
+     headers.append('Content-Type', 'application/json');
+
+    let body = JSON.stringify({
+        id_usuario: id_usuario,
+        clave: clave
+    });
+
+ return new Promise(
+      resolve=>{
+        this.http.put(this.urlApi + 'updatepass/'+id_usuario, JSON.parse(body), {headers: headers})
      .map(res => res.json())
         .subscribe((data1) => {
                  resolve(data1)
