@@ -41,9 +41,14 @@ export class DetailSpacePage {
     console.log("espacio "+id);
     this.utlizando = "si";
     this.parkService.sendinfo(this.varsGlobals.getUserId(),id);
-     this.showAlert() ;
-     this.goToHome(this.utlizando,this.varsGlobals.getUserId(), this.varsGlobals.getrol(), this.varsGlobals.getUsuario());
-    
+     this.showAlert();
+
+     
+      setTimeout(() => {
+      console.log('Async operation has ended');
+        this.goToHome(this.utlizando,this.varsGlobals.getUserId(), this.varsGlobals.getrol(), this.varsGlobals.getUsuario());
+     }, 500);
+  
   }
 
   goToHome(utlizando, id_usuario, rol,nombre){
