@@ -70,6 +70,10 @@ export class ServicesParkProvider {
      return this.http.get(this.urlApi + 'daysFreeByUser/'+idUser)
      .map(res => res.json())
   }
+  getSpaceOccupiedForMe(idUser){
+     return this.http.get(this.urlApi + 'SpaceOccupiedForMe/'+idUser)
+     .map(res => res.json())
+  }
    freeSpace(info){//recibe un string con 2 fechas y el usuario se separa con php en el servidor
      return new Promise(
       resolve=>{

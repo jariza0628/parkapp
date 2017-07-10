@@ -76,6 +76,13 @@
   </ion-item>
   
 </ion-list>
+<ion-grid  *ngIf="utilizalugar =='1'" style="padding: 0px !important;">
+    <ion-row >
+    <ion-col col  style="color: grey; font-size: 16px;padding-left: 10px;  padding-top: 10px;">
+     <ion-icon name="car"></ion-icon> Estoy utilizando el espacio: {{ SpaceOccupiedForMe }}
+    </ion-col>
+    </ion-row>
+ </ion-grid>
  <button *ngIf="utilizalugar =='1'" (click)="unlockSpace()" ion-button block color="danger" style="margin-left: 5px;margin-right: 5px">Desbloquear Espacio</button>
  
   

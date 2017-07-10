@@ -17,32 +17,41 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
-  pages2: Array<{title: string, component: any}>;
-  pages3: Array<{title: string, component: any}>;
+  pages: Array<{title: string, icon: string, component: any}>;
+  pages2: Array<{title: string, icon: string, component: any}>;
+  pages3: Array<{title: string, icon: string, component: any}>;
+  pages4: Array<{title: string, icon: string, component: any}>;
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public varsGlobals: VarsGlobalsProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
    
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Parqueaderos', component: BuildingsPage },
-      { title: 'Mi Perfil', component: BlankPage },
-      { title: 'Mi espacio', component: MyspacePage }
+      { title: 'Home', icon: 'home', component: HomePage },
+      
+      { title: 'Mi Perfil',icon: 'person', component: BlankPage },
+      { title: 'Mi espacio',icon: 'car', component: MyspacePage }
      
     ];
       this.pages2 = [
-      { title: 'Home', component: HomePage },
-      { title: 'Parqueaderos', component: BuildingsPage },
+      { title: 'Home', icon: 'home',component: HomePage },
+     
       //{ title: 'Mi Perfil', component: BlankPage },
-      { title: 'Login', component: LoginPage }
+      { title: 'Login', icon: 'key',component: LoginPage }
       
     ];
      this.pages3 = [
-      { title: 'Home', component: HomePage },
-      { title: 'Mi Perfil', component: BlankPage },
-      { title: 'Parqueaderos', component: BuildingsPage }
+      { title: 'Home', icon: 'home',component: HomePage },
+      { title: 'Mi Perfil', icon: 'person',component: BlankPage }
+     
+     
+      
+    ];
+      this.pages4 = [
+      { title: 'Home', icon: 'home',component: HomePage },
+      { title: 'Mi Perfil', icon: 'person',component: BlankPage },
+      { title: 'Mi espacio', icon: 'car',component: MyspacePage }
+      
      
       
     ];

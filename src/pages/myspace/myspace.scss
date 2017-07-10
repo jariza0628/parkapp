@@ -1,3 +1,29 @@
 page-myspace {
 
+.picker-md .picker-prefix,
+.picker-md .picker-suffix,
+.picker-md .picker-opt.picker-opt-selected {
+  color: #000 !important;
 }
+
+.picker-md .picker-prefix,
+.picker-md .picker-suffix,
+.picker-md .picker-opts {
+  top: 77px;
+  font-size: 22px;
+  line-height: 42px;
+  color: #929292 !important;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+	.picker-opt-selected{
+ 	   color: #000 !important;
+	}
+	.picker-md .picker-prefix, .picker-md .picker-suffix, .picker-md .picker-opt.picker-opt-selected {
+    color: #000000 !important;
+}
+
+}
+

@@ -13,20 +13,22 @@
 </ion-header>
 
 
-<ion-content class="cards-bg">
-	<ion-card >
-		<ion-card-header color="azul">
-			<h2 style="text-align: center;color: blue;font-size: 22px">FreeSpot</h2>
-		</ion-card-header>
+<ion-content class="cards-bg fondo">
+	     <div style="text-align: center;margin-top: 30px">
+			<img src="assets/img/icon.png" width="100px">
+		</div>
+	<ion-card class="transparente">
+		
+		
 		<ion-card-content>
 			<ion-list>
 
-				<ion-item>
+				<ion-item class="transparente">
 					<ion-label floating>E-mail</ion-label>
 					<ion-input type="text" [(ngModel)]="email"></ion-input>
 				</ion-item>
 
-				<ion-item>
+				<ion-item class="transparente">
 					<ion-label floating>Contraseña</ion-label>
 					<ion-input type="password" [(ngModel)]="clave"></ion-input>
 				</ion-item>

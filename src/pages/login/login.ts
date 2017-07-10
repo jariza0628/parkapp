@@ -84,6 +84,7 @@ export class LoginPage {
   			this.VarsGlobals.setUserId(data.id_usuario);
   			this.VarsGlobals.setbuildingId(1);//solo transelca edificio
   			this.VarsGlobals.setrol(data.rol);
+        this.VarsGlobals.setUsuario(data.nombre +" "+data.apellido)
   			this.ionViewDidEnter();
   			this.goToHome(data.id_usuario, data.rol, data.nombre +" "+data.apellido);
 

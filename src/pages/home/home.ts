@@ -26,9 +26,11 @@ export class HomePage {
   public rol: any;
   public usuario: any;
   public nombre:any;
+  public nombre2:any;
   public utlizando:any;
   public userutilizaspace: any;
   public id_space: any;
+  public SpaceOccupiedForMe: any;
   constructor(
   	public navCtrl: NavController, 
   	public navParams: NavParams, 
@@ -53,7 +55,10 @@ export class HomePage {
     this.rol = this.navParams.get('rol');
     this.userId = this.varsGlobals.getUserId();
     this.nombre = this.navParams.get('nombre');
+    this.nombre2 = this.varsGlobals.getUsuario();
     this.utlizando = this.navParams.get('utlizando');
+    this.SpaceOccupiedForMe ="";
+
   }
  
   
@@ -68,60 +73,67 @@ export class HomePage {
   services(){
      //mostrar varibles
      this.userutilizaspace = null;
-    this.varsGlobals.setUsuario(this.nombre);
-    this.nombre = this.varsGlobals.getUsuario();
-    console.log("nombre:"+this.nombre);
-    console.log("userid: "+this.varsGlobals.getUserId());
-    console.log("rol: "+this.varsGlobals.getrol());
-    console.log("utilizando park: "+this.utlizando);
+    
+    
+   
+    
     //fin mostrar variables
+   
+      
     if (this.rol!=null){
       this.varsGlobals.setUserId(this.user);
       this.varsGlobals.setrol(this.rol);
+      this.varsGlobals.setUsuario(this.nombre);
+      
 
       this.userId = this.varsGlobals.getUserId();
+      this.nombre2 = this.varsGlobals.getUsuario();
+      if(this.nombre!=null){
+        this.getNombreuser(this.userId);
+      }
     }
+     console.log("nombre:"+this.nombre);
+    console.log("userid: "+this.varsGlobals.getUserId());
+    console.log("rol: "+this.varsGlobals.getrol());
     if(this.varsGlobals.getrol()==2 ){//si es dueño de parqueadero mostrar mi espacio en menu
       this.menu.enable(false, 'menu1');
       this.menu.enable(false, 'menu3');
+      this.menu.enable(false, 'menu4');
       this.menu.enable(true, 'menu2');
-
-         this.varsGlobals.idSpaceByuser(this.user).subscribe(
-          data => {
-            this.id_space = data.id_espacio;
-            if(this.id_space!=null){
-              this.varsGlobals.setIdSpace(this.id_space);
-            }
-            
-
-          }
-         );
-          setTimeout(() => {
-           
-                if(this.id_space==null){
-                  this.id_space = this.varsGlobals.getIdSpace();
-                }
-                console.log("id space mio: "+this.id_space);
-               this.varsGlobals.getOccupiedWhy(this.id_space).subscribe(
-                data => {
-                  this.userutilizaspace = data.nombre;
-                  console.log(this.userutilizaspace);
-                } );
-          }, 500);
-        
-        
-      
+      this.utilizansospace();
+       this.getNombreuser(this.userId);
     }
     if(this.varsGlobals.getrol()==3 ){//si es dueño de parqueadero mostrar mi espacio en menu
       this.menu.enable(false, 'menu1');
       this.menu.enable(false, 'menu2');
+      this.menu.enable(false, 'menu4');
       this.menu.enable(true, 'menu3');
+       this.getNombreuser(this.userId);
     }
-    if(this.varsGlobals.getrol()==3){
+    if(this.varsGlobals.getrol()==4 ){//si es dueño de parqueadero mostrar mi espacio en menu
+      this.menu.enable(false, 'menu1');
+      this.menu.enable(false, 'menu2');
+      this.menu.enable(true, 'menu4');
+      this.menu.enable(false, 'menu3');
+      this.utilizansospace();
+       this.getNombreuser(this.userId);
+    }
+    if(this.varsGlobals.getrol()==3 || this.varsGlobals.getrol()==4){
       if(this.utlizando=='si'){//
         this.utlizando = this.varsGlobals.setutilizando("si");
+
+           
+           
+         
+        
       }
+         setTimeout(() => {
+              this.SpaceOccupiedForMeUser(this.userId);
+                this.getNombreuser(this.userId);
+          }, 500);
+   
     }
+    console.log("utilizando park: "+this.utlizando);
     this.parkService.getNumSpaceFreeToday(1).subscribe(
       data => {
         this.numSpaceFree = (data.ESPACIOSLIBRESHOY);
@@ -155,6 +167,46 @@ export class HomePage {
   }
   goToSpacedetail(spaceId){
     this.navCtrl.push(DetailSpacePage, {spaceId:spaceId});
+  }
+  SpaceOccupiedForMeUser(iduser){//que espacio ocupo rol 3 y 4
+      this.parkService.getSpaceOccupiedForMe(this.userId).subscribe(
+      data => {
+        this.SpaceOccupiedForMe = data.numero;
+        console.log("SpaceOccupiedForMeUser "+this.SpaceOccupiedForMe);
+      }
+      );
+  }
+  getNombreuser(iduser){//que espacio ocupo rol 3 y 4
+      this.parkService.getUser(iduser).subscribe(
+      data => {
+        this.nombre = data.nombre + " "+data.apellido;
+        console.log("nombre service "+this.nombre);
+      }
+      );
+  }
+  utilizansospace(){
+     this.varsGlobals.idSpaceByuser(this.user).subscribe(
+          data => {
+            this.id_space = data.id_espacio;
+            if(this.id_space!=null){
+              this.varsGlobals.setIdSpace(this.id_space);
+            }
+            
+
+          }
+         );
+          setTimeout(() => {
+           
+                if(this.id_space==null){
+                  this.id_space = this.varsGlobals.getIdSpace();
+                }
+                console.log("id space mio: "+this.id_space);
+               this.varsGlobals.getOccupiedWhy(this.id_space).subscribe(
+                data => {
+                  this.userutilizaspace = data.nombre;
+                  console.log(this.userutilizaspace);
+                } );
+          }, 500);
   }
   unlockSpace(){
     this.parkService.unlockspace(this.userId);
