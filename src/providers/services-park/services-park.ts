@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers} from '@angular/http';
+import {Http, Headers,Response, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
@@ -12,11 +12,12 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ServicesParkProvider {
   public urlApi: string;
+  public data1: any;
 
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-    //this.urlApi = "http://slimapp/api/";
-    this.urlApi = "http://www.parkapp.me/api/";
+    this.urlApi = "http://slimapp/api/";
+    //this.urlApi = "http://www.parkapp.me/api/";
   }
 
   getRemoteda(){
@@ -75,12 +76,11 @@ export class ServicesParkProvider {
      .map(res => res.json())
   }
    freeSpace(info){//recibe un string con 2 fechas y el usuario se separa con php en el servidor
-     return new Promise(
+      return new Promise(
       resolve=>{
-        this.http.get(this.urlApi + 'freeSpace/'+info)
-        .map(res => res.json())
-        .subscribe((data1) => {
-                 resolve(data1)
+        this.http.get(this.urlApi + 'freeSpace/'+info, ).map(res => res.json()).subscribe((data1) => {
+                 this.data1 = data1;
+                 resolve(this.data1);
           },
           err=>{
             console.log(err);
@@ -139,6 +139,7 @@ export class ServicesParkProvider {
           },
           err=>{
             console.log(err);
+            
           }
         )
       }

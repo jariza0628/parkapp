@@ -14,7 +14,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-fab top right edge>
+  <ion-fab top right edge *ngIf="so!='ios'" >
     <button ion-fab mini><ion-icon name="add"></ion-icon></button>
     <ion-fab-list>
       <button ion-fab (click)="exitApp()"><ion-icon name="exit"></ion-icon></button>

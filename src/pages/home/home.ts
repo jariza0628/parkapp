@@ -31,6 +31,7 @@ export class HomePage {
   public userutilizaspace: any;
   public id_space: any;
   public SpaceOccupiedForMe: any;
+  public so: any;
   constructor(
   	public navCtrl: NavController, 
   	public navParams: NavParams, 
@@ -40,7 +41,9 @@ export class HomePage {
     public menu: MenuController,
     public alertCtrl: AlertController,
     public  storage: IonicStorageModule,
-    public platform: Platform)
+    public platform: Platform,
+
+    )
 
   {
   	this.spacesFree = [];
@@ -58,6 +61,22 @@ export class HomePage {
     this.nombre2 = this.varsGlobals.getUsuario();
     this.utlizando = this.navParams.get('utlizando');
     this.SpaceOccupiedForMe ="";
+    
+
+    platform.ready().then(() => {
+console.log("device!");
+            if (this.platform.is('android')) {
+                console.log("running on Android device!");
+            }
+            if (this.platform.is('ios')) {
+                console.log("running on iOS device!");
+                this.so = 'ios';
+            }
+            if (this.platform.is('mobileweb')) {
+                console.log("running in a browser on mobile!");
+            }
+
+        });
 
   }
  
@@ -215,7 +234,9 @@ export class HomePage {
     console.log('unlockSpace: '+this.userId);
   }
   exitApp(){
+  
      this.platform.exitApp();
+     
   }
   showAlert() {
       let alert = this.alertCtrl.create({
