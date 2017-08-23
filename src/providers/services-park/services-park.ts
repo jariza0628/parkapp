@@ -16,8 +16,8 @@ export class ServicesParkProvider {
 
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-    this.urlApi = "http://slimapp/api/";
-    //this.urlApi = "http://www.parkapp.me/api/";
+    //this.urlApi = "http://slimapp/api/";
+    this.urlApi = "http://www.parkapp.me/api/";
   }
 
   getRemoteda(){

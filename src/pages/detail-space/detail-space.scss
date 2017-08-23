@@ -23,4 +23,28 @@ page-detail-space {
 	.derecha{
 		float: right;
 	}
+	h2 {
+    margin-top: 0.8rem;
+    font-size: 3.4rem;
+    text-align: center;
+    color: #6b6b6b;
+	}
+	.row{
+	font-size: 20px;
+	}
+	.grid{
+		    background-color: #e2e2e2;
+		    width: calc(100% - 20px);
+		    border-radius: 5px;
+		    margin-top: 10px;
+		    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.48), 0 3px 1px -2px rgba(0, 0, 0, 0.21), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+		    margin-bottom: 8px;
+	}
+	.label-md {
+    
+    font-size: 20px;
+	}
+
+
+
 }
