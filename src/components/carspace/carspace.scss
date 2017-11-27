@@ -1,0 +1,58 @@
+carspace {
+    .priceold{
+        position: absolute;
+        right: 3px;
+        top: 27px;
+        color: grey;
+        font-size: 1em;
+        text-decoration: line-through ;
+        text-decoration-color: red;
+    }
+    .pricenew{
+        position: absolute;
+        right: 3px;
+        top: 47px;
+        color: green;
+        font-size: 1em;    
+    }
+    .newdish{
+        position: absolute;
+        background-color: #ff4a4a;
+        bottom: 6px;
+        padding-top: 3px;
+        height: 16px;
+        width: 80px;
+        color: white;
+        font-size: 0.8em;
+    }
+    .item-md.item-block .item-inner {
+        border-bottom: none;
+    }
+    .font{
+        font-size: 1.9em;
+
+    }
+    .color{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+  
+    float: right;
+    position: absolute;
+    top: 36px;
+    right: 15px;
+    box-shadow: 0px 0px 5px 1px rgba(87, 87, 87, 0.75);
+   
+  }
+  .red{
+     background-color:#ff000087;
+  }
+  
+  .orange{
+      background-color: #ffa6008c;
+    }
+  
+  .green{
+    background-color: rgba(0, 128, 0, 0.541);
+  }
+}

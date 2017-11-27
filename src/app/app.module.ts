@@ -24,6 +24,7 @@ import { ServicesParkProvider } from '../providers/services-park/services-park';
 import {enableProdMode} from '@angular/core';
 import { AuthProvider } from '../providers/auth/auth';
 import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
+import { CarspaceComponent } from '../components/carspace/carspace';
 enableProdMode();
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ enableProdMode();
     SpacesPage,
     MyspacePage,
     BlankPage,
-    LoginPage
+    LoginPage,
+    CarspaceComponent
     
   ],
   imports: [

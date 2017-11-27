@@ -32,6 +32,8 @@ export class HomePage {
   public id_space: any;
   public SpaceOccupiedForMe: any;
   public so: any;
+  public color: string;
+  public hora: string;
   constructor(
   	public navCtrl: NavController, 
   	public navParams: NavParams, 
@@ -61,8 +63,8 @@ export class HomePage {
     this.nombre2 = this.varsGlobals.getUsuario();
     this.utlizando = this.navParams.get('utlizando');
     this.SpaceOccupiedForMe ="";
-    
-
+    this.color = "gray";
+    this.hora = "";
     platform.ready().then(() => {
 console.log("device!");
             if (this.platform.is('android')) {
@@ -175,7 +177,11 @@ console.log("device!");
     this.parkService.getSpaceFreeToday().subscribe(
       data => {
         this.spacesFree = (data);
+       
         console.log(this.spacesFree);
+            
+        console.log(data.hora);
+        
         this.loader.dismiss();
       }
 
@@ -264,4 +270,8 @@ console.log("device!");
     
     }, 1300);
   }
+}
+function trim(cadena) 
+{
+return cadena.replace(" ", "")
 }

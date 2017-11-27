@@ -14,76 +14,83 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-fab top right edge *ngIf="so!='ios'" >
-    <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+  <ion-fab top right edge *ngIf="so!='ios'">
+    <button ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
     <ion-fab-list>
-      <button ion-fab (click)="exitApp()"><ion-icon name="exit"></ion-icon></button>
-      
+      <button ion-fab (click)="exitApp()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+
     </ion-fab-list>
   </ion-fab>
-  
 
-  <div style="width:100%; height: 170px;background-image: url('assets/img/Presentacion.png');    background-size: cover; ">
-    
-  </div>
-<ion-grid  style="padding: 0px !important;" *ngIf="nombre!=null">
-    <ion-row >
-    <ion-col col  style="color: grey; font-size: 16px;padding-left: 10px;  padding-top: 10px;">
-     <ion-icon name="person"></ion-icon> Hola {{ nombre }}
-    </ion-col>
+  <ion-grid style="padding: 0px !important;" *ngIf="nombre!=null">
+    <ion-row>
+      <ion-col col style="color: grey; font-size: 16px;padding-left: 10px;  padding-top: 10px;">
+        <ion-icon name="person"></ion-icon> Hola {{ nombre }}
+      </ion-col>
     </ion-row>
- </ion-grid>
+  </ion-grid>
 
   <ion-card (click)="goToBlocks(1)">
-    <img src="assets/img/image.jpg"/>
+    <img src="assets/img/image.jpg" />
     <div class="card-title">Mi parqueadero</div>
     <div class="card-subtitle">Ver</div>
   </ion-card>
 
- <ion-grid paddig0 style="padding: 0px !important;">
-  <ion-row paddig0>
-    <ion-col col paddig0>
-      <div class="cardt">
-        <h5 style="text-align: center;margin: 5px;">Diponibles HOY {{ glo }}</h5>
-        <p style="font-size: 22px;margin: 5px;color: #009c2e">{{ numSpaceFree }}</p>
-      </div>
-    </ion-col>
-    <ion-col col>
-      <div class="cardt">
-        <h5 style="text-align: center;margin: 5px;">Total Espacios</h5>
-        <p style="font-size: 22px;margin: 5px;color: #009c2e">{{ numSpace }}</p>
-      </div>
-    </ion-col>
-  </ion-row>
-  
-</ion-grid>
+  <ion-grid paddig0 style="padding: 0px !important;">
+    <ion-row paddig0>
+      <ion-col col paddig0>
+        <div class="cardt">
+          <h5 style="text-align: center;margin: 5px;">Diponibles HOY {{ glo }}</h5>
+          <p style="font-size: 22px;margin: 5px;color: #009c2e">{{ numSpaceFree }}</p>
+        </div>
+      </ion-col>
+      <ion-col col>
+        <div class="cardt">
+          <h5 style="text-align: center;margin: 5px;">Total Espacios</h5>
+          <p style="font-size: 22px;margin: 5px;color: #009c2e">{{ numSpace }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
   <ion-row paddig0 *ngIf="userutilizaspace!=null">
     <ion-col col paddig0 style="color: #fd8585; font-size: 16px;padding-left: 10px;">
       Puesto ocupado por: {{ userutilizaspace }}
     </ion-col>
   </ion-row>
-  
+
   <ion-list *ngIf="utilizalugar !='1'">
-  <ion-list-header>
-    Disponibles Hoy
-  </ion-list-header>
-  <ion-item (click)="goToSpacedetail(fs.espacioid)" *ngFor="let fs of spacesFree" >
-    <ion-avatar item-left >
-      <img src="assets/img/car.png">
-    </ion-avatar>
-    <h2>Puesto #: {{fs.nombre}}</h2>
-    <p>Disponible</p>
-  </ion-item>
-  
-</ion-list>
-<ion-grid  *ngIf="utilizalugar =='1'" style="padding: 0px !important;">
-    <ion-row >
-    <ion-col col  style="color: grey; font-size: 16px;padding-left: 10px;  padding-top: 10px;">
-     <ion-icon name="car"></ion-icon> Estoy utilizando el espacio: {{ SpaceOccupiedForMe }}
-    </ion-col>
+    <ion-list-header>
+      Disponibles Hoy
+    </ion-list-header>
+    <ion-item (click)="goToSpacedetail(fs.espacioid)" *ngFor="let fs of spacesFree">
+      <ion-avatar item-left>
+        <img src="assets/img/car.png">
+      </ion-avatar>
+      <h2>Puesto #: {{fs.nombre}}</h2>
+      <p>{{fs.hora}}</p>
+      <div class="color green" *ngIf="fs.hora=='Libre Todo el dia'"></div>
+      <div class="color red" *ngIf="fs.hora=='Libre de 8:00 a 12:00'"></div>
+      <div class="color orange" *ngIf="fs.hora=='Libre de 14:00 a 18:00'"></div>
+    </ion-item>
+
+  </ion-list>
+  <ion-list (click)="goToSpacedetail(fs.espacioid)" *ngFor="let fs of spacesFree">
+    <carspace puesto="{{fs.nombre}}" hora="{{fs.hora}}"></carspace>
+  </ion-list>
+
+  <ion-grid *ngIf="utilizalugar =='1'" style="padding: 0px !important;">
+    <ion-row>
+      <ion-col col style="color: grey; font-size: 16px;padding-left: 10px;  padding-top: 10px;">
+        <ion-icon name="car"></ion-icon> Estoy utilizando el espacio: {{ SpaceOccupiedForMe }}
+      </ion-col>
     </ion-row>
- </ion-grid>
- <button *ngIf="utilizalugar =='1'" (click)="unlockSpace()" ion-button block color="danger" style="margin-left: 5px;margin-right: 5px">Desbloquear Espacio</button>
- 
-  
+  </ion-grid>
+  <button *ngIf="utilizalugar =='1'" (click)="unlockSpace()" ion-button block color="danger" style="margin-left: 5px;margin-right: 5px">Desbloquear Espacio</button>
+
+
 </ion-content>

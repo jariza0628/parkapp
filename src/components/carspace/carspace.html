@@ -1,0 +1,16 @@
+<ion-item>
+  <ion-thumbnail item-start>
+    <img src="https://ccbuenavistamonteria.com/wp-content/uploads/2015/04/salvator-s-pizza.jpg">
+    <div text-center class="newdish">
+      Libre
+    </div>
+  </ion-thumbnail>
+  <h2>
+    <strong>Puesto: <span>{{puesto}}</span></strong>
+  </h2>
+  <p>{{hora}}</p>
+
+<div class="color green" *ngIf="hora=='Libre Todo el dia'"></div>
+<div class="color red" *ngIf="hora=='Libre de 8:00 a 12:00'"></div>
+<div class="color orange" *ngIf="hora=='Libre de 14:00 a 18:00'"></div>
+</ion-item>
