@@ -7,6 +7,7 @@ import { BuildingsPage } from '../pages/buildings/buildings';
 import { MyspacePage } from '../pages/myspace/myspace';
 import { LoginPage } from '../pages/login/login';
 import { BlankPage } from '../pages/blank/blank';
+import { NoveltyPage } from "../pages/novelty/novelty";
 
 import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
 @Component({
@@ -30,14 +31,15 @@ export class MyApp {
       { title: 'Home', icon: 'home', component: HomePage },
       
       { title: 'Mi Perfil',icon: 'person', component: BlankPage },
-      { title: 'Mi espacio',icon: 'car', component: MyspacePage }
-     
+      { title: 'Mi espacio',icon: 'car', component: MyspacePage },
+      { title: 'Soporte', icon: 'help-circle', component: NoveltyPage }
     ];
       this.pages2 = [
       { title: 'Home', icon: 'home',component: HomePage },
      
       //{ title: 'Mi Perfil', component: BlankPage },
-      { title: 'Login', icon: 'key',component: LoginPage }
+      { title: 'Login', icon: 'key',component: LoginPage },
+      { title: 'Soporte', icon: 'help-circle', component: NoveltyPage }
       
     ];
      this.pages3 = [

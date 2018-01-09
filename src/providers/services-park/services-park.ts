@@ -121,6 +121,22 @@ export class ServicesParkProvider {
       }
     );
   }
+  postNovedad(id_user, titulo, descripcion) {
+    let headers = new Headers;
+    headers.append("content-type", "application/json");
+    return this.http.post(this.urlApi + 'novelty', { titulo: titulo, descripcion: descripcion, iduser: id_user }, { headers: headers })
+      .map((res: Response) => { console.log(res); return { status: res.status, result: res.json() } });
+  }
+  getNovedad(idUser) {
+    return this.http.get(this.urlApi + 'novelty/' + idUser)
+    .map(res => res.json())
+    
+  }
+  deleteNovedad(idnovedad){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.delete(this.urlApi + 'novelty/' + idnovedad, options).map(res => res.json())
+  }
   sendinfo(iduser,id){
      let headers = new Headers();
      headers.append('Content-Type', 'application/json');

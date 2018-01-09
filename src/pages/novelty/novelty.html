@@ -1,0 +1,65 @@
+<!--
+  Generated template for the NoveltyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="azul">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Soporte</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid no-padding>
+    <h5 padding class="no-margin">
+      <ion-icon name="help-buoy"></ion-icon> ¿Que es y como reportar una novedad?</h5>
+  </ion-grid>
+  <hr>
+  <ion-grid padding class="no-padding-top no-padding">
+    <h6 class="no-margin">Crear una novedad para soporte</h6>
+    <form [formGroup]="registroForm">
+      <ion-item class="no-padding">
+        <ion-label floating>Titulo</ion-label>
+        <ion-input formControlName="novedad" type="text" [(ngModel)]="novedad" name="novedad" ></ion-input>
+      </ion-item>
+      <ion-item class="no-padding">
+        <textarea formControlName="descripcion" class="textarea" placeholder="Describe aqui la novedad que presenta la aplicación." [(ngModel)]="descripcion" name="descripcion"
+          rows="3" ></textarea >
+    </ion-item>
+    </form>
+    <div >
+      <button ion-button icon-left (click)="addNovedad()">
+        <ion-icon name="checkmark-circle" ></ion-icon>
+        Crear Novedad
+      </button>
+       
+   </div>
+  </ion-grid>
+  <h3 padding  class="no-margin">Mis Novedades</h3>
+  <ion-grid class="no-padding">
+    <ion-list>
+      <ion-item class="shadow" *ngFor="let nov of misnovedades">
+        <ion-avatar item-start>
+          <ion-icon name="chatbubbles"class="size"></ion-icon>
+        </ion-avatar>
+        <h2>{{nov.titulo}}</h2>
+        <p>Estado: {{nov.estado}}</p>
+        
+        <button class="position" ion-button icon-only clear (click)="deleteNovetly(nov.id_novedad)">
+          <ion-icon name="trash" ></ion-icon>
+        </button>
+      </ion-item>
+      
+    </ion-list>
+  </ion-grid>
+
+</ion-content>

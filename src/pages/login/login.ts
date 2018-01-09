@@ -3,6 +3,7 @@ import { Http, Headers } from '@angular/http';
 import { IonicPage, NavController,MenuController,  NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { VarsGlobalsProvider } from '../../providers/vars-globals/vars-globals';
 import { HomePage } from '../home/home';
+import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 /**
  * Generated class for the LoginPage page.
@@ -26,7 +27,8 @@ export class LoginPage {
   	public loading:LoadingController,
   	public VarsGlobals: VarsGlobalsProvider,
   	public alertCtrl: AlertController,
-  	public menu: MenuController
+		public menu: MenuController,
+		private storage: Storage
   	)
   {
 
@@ -81,10 +83,12 @@ export class LoginPage {
   			this.showAlert();
   		}else{
   			console.log(data)
-  			this.VarsGlobals.setUserId(data.id_usuario);
+				this.VarsGlobals.setUserId(data.id_usuario);
+				this.storage.set('iduser', data.id_usuario);
   			this.VarsGlobals.setbuildingId(1);//solo transelca edificio
   			this.VarsGlobals.setrol(data.rol);
-        this.VarsGlobals.setUsuario(data.nombre +" "+data.apellido)
+				this.VarsGlobals.setUsuario(data.nombre +" "+data.apellido)
+				this.storage.set('username', data.nombre);
   			this.ionViewDidEnter();
   			this.goToHome(data.id_usuario, data.rol, data.nombre +" "+data.apellido);
 
