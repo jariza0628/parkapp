@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, ModalOptions, Loa
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { ServicesParkProvider } from '../../providers/services-park/services-park';
+import { DetailNoveltyPage } from "../detail-novelty/detail-novelty";
 /**
  * Generated class for the NoveltyPage page.
  *
@@ -124,6 +125,9 @@ export class NoveltyPage {
       this.GetNovedades(this.iduser);
       refresher.complete();
     }, 2000);
+  }
+  goTodetail(idnovedad){
+    this.navCtrl.push(DetailNoveltyPage, {id: idnovedad})
   }
 
 }

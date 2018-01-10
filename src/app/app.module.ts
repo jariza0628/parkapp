@@ -16,6 +16,7 @@ import { MyspacePage } from '../pages/myspace/myspace';
 import { BlankPage } from '../pages/blank/blank';
 import { LoginPage } from '../pages/login/login';
 import { NoveltyPage } from "../pages/novelty/novelty";
+import { DetailNoveltyPage } from "../pages/detail-novelty/detail-novelty";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -40,6 +41,7 @@ enableProdMode();
     BlankPage,
     LoginPage,
     NoveltyPage,
+    DetailNoveltyPage,
     CarspaceComponent
     
   ],
@@ -62,7 +64,8 @@ enableProdMode();
     MyspacePage,
     BlankPage,
     LoginPage,
-    NoveltyPage
+    NoveltyPage,
+    DetailNoveltyPage
     
   ],
   providers: [

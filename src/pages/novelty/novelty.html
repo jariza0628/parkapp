@@ -48,11 +48,11 @@
   <ion-grid class="no-padding">
     <ion-list>
       <ion-item class="shadow" *ngFor="let nov of misnovedades">
-        <ion-avatar item-start>
+        <ion-avatar item-start (click)="goTodetail(nov.id_novedad)">
           <ion-icon name="chatbubbles"class="size"></ion-icon>
         </ion-avatar>
-        <h2>{{nov.titulo}}</h2>
-        <p>Estado: {{nov.estado}}</p>
+        <h2 (click)="goTodetail(nov.id_novedad)">{{nov.titulo}}</h2>
+        <p (click)="goTodetail(nov.id_novedad)">Estado: {{nov.estado}}</p>
         
         <button class="position" ion-button icon-only clear (click)="deleteNovetly(nov.id_novedad)">
           <ion-icon name="trash" ></ion-icon>
