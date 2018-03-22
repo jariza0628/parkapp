@@ -142,11 +142,6 @@ console.log("device!");
     if(this.varsGlobals.getrol()==3 || this.varsGlobals.getrol()==4){
       if(this.utlizando=='si'){//
         this.utlizando = this.varsGlobals.setutilizando("si");
-
-           
-           
-         
-        
       }
          setTimeout(() => {
               this.SpaceOccupiedForMeUser(this.userId);
@@ -171,6 +166,8 @@ console.log("device!");
       data => {
         this.varsGlobals.setUtilizalugar(data.ocupado);
         this.utilizalugar = this.varsGlobals.getUtilizalugar();
+        console.log("utilizalugar", this.utilizalugar);
+        
       }
       );
  

@@ -14,10 +14,12 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-row padding>
-    <h5>Novedad</h5>
+    <h5>{{nombre_novedad}}</h5>
     <ion-col col-12 class="no-margin no-padding">
-      <p class="no-margin">Descripcion de la novedad</p>
+      <p class="no-margin">{{des}}</p>
     </ion-col>
+    <hr>
+    <br><br>
     <ion-col col-12 class="no-margin no-padding">
       <form [formGroup]="registroForm">
         <p class="no-margin">Añadir una respuesta:</p>
@@ -25,18 +27,22 @@
           <textarea formControlName="respuesta" class="textarea" placeholder="Escriba aqui su comentario o repuesta." [(ngModel)]="respuesta"
             name="respuesta" rows="3"></textarea >
               </ion-item>
+              <button ion-button icon-left (click)="addAnswer()">
+                <ion-icon name="checkmark-circle"></ion-icon>
+                 Responder
+              </button>
               </form>
         </ion-col>
   </ion-row>
     
   <ion-row>
 
-    <ion-item class="shadow">
+    <ion-item text-wrap class="shadow item item-text-wrap" *ngFor="let res of answer">
       <ion-avatar item-start>
-        <ion-icon name="chatbubbles" class="size"></ion-icon>
+        <ion-icon name="chatbubbles" class="size" ></ion-icon>
       </ion-avatar>
-      <h2>Titulo</h2>
-      <p>Estado</p>
+      <h2>De: {{res.quien_envia}}</h2>
+      <span>{{res.mensaje}} </span> 
     
       <button class="position" ion-button icon-only clear>
         <ion-icon name="trash"></ion-icon>

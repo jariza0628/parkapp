@@ -65,9 +65,12 @@
   <h3 padding class="disp">
     Disponibles Hoy
   </h3>
-  <ion-list (click)="goToSpacedetail(fs.espacioid)" *ngFor="let fs of spacesFree" class="no-margin">
-    <carspace puesto="{{fs.nombre}}" hora="{{fs.hora}}"></carspace>
-  </ion-list>
+  <div *ngIf="utilizalugar =='0'">
+    <ion-list (click)="goToSpacedetail(fs.espacioid)" *ngFor="let fs of spacesFree" class="no-margin">
+      <carspace puesto="{{fs.nombre}}" hora="{{fs.hora}}"></carspace>
+    </ion-list>
+  </div>
+  
 
   <ion-grid *ngIf="utilizalugar =='1'" style="padding: 0px !important;">
     <ion-row>

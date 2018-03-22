@@ -126,8 +126,8 @@ export class NoveltyPage {
       refresher.complete();
     }, 2000);
   }
-  goTodetail(idnovedad){
-    this.navCtrl.push(DetailNoveltyPage, {id: idnovedad})
+  goTodetail(idnovedad, nombre, des){
+    this.navCtrl.push(DetailNoveltyPage, {id: idnovedad, nombre: nombre, descripcion: des})
   }
 
 }

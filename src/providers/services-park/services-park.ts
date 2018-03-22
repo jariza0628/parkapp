@@ -17,7 +17,7 @@ export class ServicesParkProvider {
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
     //this.urlApi = "http://slimapp/api/";
-    this.urlApi = "http://www.parkapp.me/api/";
+    this.urlApi = "http://159.203.37.81/api/";
   }
 
   getRemoteda(){
@@ -136,6 +136,22 @@ export class ServicesParkProvider {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this.http.delete(this.urlApi + 'novelty/' + idnovedad, options).map(res => res.json())
+  }
+  //Respuestas Servicios
+  getAnswer(idnovedad) {
+    return this.http.get(this.urlApi + 'answerByNoveltyd/' + idnovedad)
+      .map(res => res.json())
+  }
+  deleteAnswer(idAnswer) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.delete(this.urlApi + 'answer/' + idAnswer, options).map(res => res.json())
+  }
+  postAnswer(idNovedad, Repuesta, quien) {
+    let headers = new Headers;
+    headers.append("content-type", "application/json");
+    return this.http.post(this.urlApi + 'novelty', { titulo: Repuesta, id: idNovedad, quien_responde:quien}, { headers: headers })
+      .map((res: Response) => { console.log(res); return { status: res.status, result: res.json() } });
   }
   sendinfo(iduser,id){
      let headers = new Headers();

@@ -1,6 +1,6 @@
 {
   "name": "ParkApp",
-  "app_id": "",
+  "app_id": "9b1082a5",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
