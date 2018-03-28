@@ -103,7 +103,6 @@ export class NoveltyPage {
     console.log("delete",idnovedad);
     this._Service.deleteNovedad(idnovedad).subscribe(data =>{
         
-      
     }, (err) => {
       console.log(err)
     })

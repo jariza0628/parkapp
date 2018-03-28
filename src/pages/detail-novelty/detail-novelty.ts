@@ -64,7 +64,7 @@ export class DetailNoveltyPage {
     this._Service.getAnswer(idnovedad).subscribe(data =>{
       if(data){
         console.log("Respuetas", data);
-        this.answer = data;
+        this.answer = (data);
       }
     })
   }

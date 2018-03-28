@@ -29,33 +29,24 @@ export class MyApp {
    
     this.pages = [
       { title: 'Home', icon: 'home', component: HomePage },
-      
       { title: 'Mi Perfil',icon: 'person', component: BlankPage },
       { title: 'Mi espacio',icon: 'car', component: MyspacePage },
       { title: 'Soporte', icon: 'help-circle', component: NoveltyPage }
     ];
       this.pages2 = [
       { title: 'Home', icon: 'home',component: HomePage },
-     
       //{ title: 'Mi Perfil', component: BlankPage },
-      { title: 'Login', icon: 'key',component: LoginPage },
-      { title: 'Soporte', icon: 'help-circle', component: NoveltyPage }
-      
+      { title: 'Login', icon: 'key',component: LoginPage }
     ];
      this.pages3 = [
       { title: 'Home', icon: 'home',component: HomePage },
-      { title: 'Mi Perfil', icon: 'person',component: BlankPage }
-     
-     
-      
+      { title: 'Mi Perfil', icon: 'person',component: BlankPage },
+      { title: 'Soporte', icon: 'help-circle', component: NoveltyPage }
     ];
       this.pages4 = [
       { title: 'Home', icon: 'home',component: HomePage },
       { title: 'Mi Perfil', icon: 'person',component: BlankPage },
       { title: 'Mi espacio', icon: 'car',component: MyspacePage }
-      
-     
-      
     ];
 
   }
