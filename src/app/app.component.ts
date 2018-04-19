@@ -10,6 +10,8 @@ import { BlankPage } from '../pages/blank/blank';
 import { NoveltyPage } from "../pages/novelty/novelty";
 
 import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
+import { PushServiceProvider } from '../providers/push-service/push-service';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,7 +24,8 @@ export class MyApp {
   pages2: Array<{title: string, icon: string, component: any}>;
   pages3: Array<{title: string, icon: string, component: any}>;
   pages4: Array<{title: string, icon: string, component: any}>;
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public varsGlobals: VarsGlobalsProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public varsGlobals: VarsGlobalsProvider,
+    public _pushService: PushServiceProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -57,6 +60,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this._pushService.init_notifications();
     });
   }
 

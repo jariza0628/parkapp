@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -26,6 +27,7 @@ import {enableProdMode} from '@angular/core';
 import { AuthProvider } from '../providers/auth/auth';
 import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
 import { CarspaceComponent } from '../components/carspace/carspace';
+import { PushServiceProvider } from '../providers/push-service/push-service';
 enableProdMode();
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ enableProdMode();
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ServicesParkProvider,
     AuthProvider,
-    VarsGlobalsProvider
+    VarsGlobalsProvider,
+    OneSignal,
+    PushServiceProvider
   ]
 })
 export class AppModule {}
