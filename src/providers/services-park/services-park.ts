@@ -19,7 +19,10 @@ export class ServicesParkProvider {
     //this.urlApi = "http://slimapp/api/";
     this.urlApi = "http://159.203.37.81/api/";
   }
-
+  getHourNow() {
+    return this.http.get(this.urlApi + 'timenow')
+      .map(res => res.json())
+  }
   getRemoteda(){
   	 return this.http.get(this.urlApi + 'buildings')
      .map(res => res.json())

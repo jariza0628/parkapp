@@ -6,39 +6,48 @@
 -->
 <ion-header>
 
-  <ion-navbar color="azul">
-    <ion-title>Detalle</ion-title>
-  </ion-navbar>
+    <ion-navbar color="azul">
+        <ion-title>Detalle</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content >
-	<div class="banner">
-		<h3 class="h3">Espacio disponible</h3>
-		<div>
-			<img src="assets/img/car.png">
-		</div>
-	</div>
-  <ion-grid>
-    <h2>Ubicación</h2>
-    <ion-row>
-        <ion-col>Piso: {{ space.piso}}</ion-col>
-        <ion-col>Bloque: {{ space.bloque}}</ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col style="color: green">Puesto: {{space.numero}}</ion-col>
-    </ion-row>
-    
-  </ion-grid>
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="banner">
+        <h3 class="h3">Espacio disponible</h3>
+        <div>
+            <img src="assets/img/car.png">
+        </div>
+    </div>
+    <ion-grid>
+        <h2>Ubicación</h2>
+        <ion-row>
+            <ion-col>Piso: {{ space.piso}}</ion-col>
+            <ion-col>Bloque: {{ space.bloque}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col style="color: green">Puesto: {{space.numero}}</ion-col>
+        </ion-row>
 
-	<ion-list>
-  <ion-list-header>
-    Disponibilidad de hoy 
-  </ion-list-header>
-  <ion-item>{{space.horario}} <button ion-button color="secondary" class="derecha" (click)="saveinfo(1,space.id_espacio)" *ngIf="tiporol=='3' || tiporol=='4' ">Utilizar</button></ion-item>
- 
-  
-</ion-list>
+    </ion-grid>
+
+    <ion-list>
+        <ion-list-header>
+            Disponibilidad de hoy
+        </ion-list-header>
+        <ion-item>
+            {{space.horario}}
+            <button ion-button color="secondary" class="derecha" (click)="saveinfo(1,space.id_espacio)" *ngIf="(tiporol=='3' || tiporol=='4') && ruleHour==1">Utilizar</button>
+        </ion-item>
+        <ion-item *ngIf="ruleHour==0">
+            <span text-wrap class="text-note">Nota: El horario para utilizar un espacio de parqueadero es de 6:00 AM en adelante, Actualice los datos después de la hora indicada.</span>
+        </ion-item>
+
+
+    </ion-list>
 
 </ion-content>
