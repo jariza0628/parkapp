@@ -18,6 +18,7 @@ import { BlankPage } from '../pages/blank/blank';
 import { LoginPage } from '../pages/login/login';
 import { NoveltyPage } from "../pages/novelty/novelty";
 import { DetailNoveltyPage } from "../pages/detail-novelty/detail-novelty";
+import { ReservationsPage } from '../pages/reservations/reservations';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,6 +29,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
 import { CarspaceComponent } from '../components/carspace/carspace';
 import { PushServiceProvider } from '../providers/push-service/push-service';
+import { ReservationsProvider } from '../providers/reservations/reservations';
 enableProdMode();
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ enableProdMode();
     LoginPage,
     NoveltyPage,
     DetailNoveltyPage,
-    CarspaceComponent
+    CarspaceComponent,
+    ReservationsPage
     
   ],
   imports: [
@@ -67,7 +70,8 @@ enableProdMode();
     BlankPage,
     LoginPage,
     NoveltyPage,
-    DetailNoveltyPage
+    DetailNoveltyPage,
+    ReservationsPage
     
   ],
   providers: [
@@ -79,7 +83,8 @@ enableProdMode();
     AuthProvider,
     VarsGlobalsProvider,
     OneSignal,
-    PushServiceProvider
+    PushServiceProvider,
+    ReservationsProvider
   ]
 })
 export class AppModule {}

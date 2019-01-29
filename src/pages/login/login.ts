@@ -59,6 +59,7 @@ export class LoginPage {
 						this.datas(data1);
 						this.VarsGlobals.setUserId(data1.id_usuario);
 						this.VarsGlobals.setUsuario(email);
+						localStorage.setItem("id_usuario", data1.id_usuario);
 						localStorage.setItem("email", email);
 						localStorage.setItem("serial", clave);
 					},

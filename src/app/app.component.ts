@@ -10,6 +10,7 @@ import { BlankPage } from '../pages/blank/blank';
 import { NoveltyPage } from "../pages/novelty/novelty";
 import { Http, Headers } from '@angular/http';
 import { Storage } from '@ionic/storage';
+import { ReservationsPage } from '../pages/reservations/reservations';
 
 import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
 import { PushServiceProvider } from '../providers/push-service/push-service';
@@ -54,6 +55,8 @@ export class MyApp {
      this.pages3 = [
       { title: 'Home', icon: 'home',component: HomePage },
       { title: 'Mi Perfil', icon: 'person',component: BlankPage },
+      { title: 'Reservar', icon: 'key',component: ReservationsPage }
+
       /*{ title: 'Soporte', icon: 'help-circle', component: NoveltyPage }*/
     ];
       this.pages4 = [

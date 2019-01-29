@@ -237,9 +237,8 @@ console.log("device!");
     console.log('unlockSpace: '+this.userId);
   }
   exitApp(){
-  
-     this.platform.exitApp();
-     
+    this.logOut();
+    this.platform.exitApp();
   }
   showAlert() {
       let alert = this.alertCtrl.create({
@@ -257,6 +256,11 @@ console.log("device!");
         this.services();
       refresher.complete();
     }, 2000);
+  }
+
+  logOut(){
+    localStorage.removeItem('email');
+    localStorage.removeItem('serial');
   }
   refresh() {
   
