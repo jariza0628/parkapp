@@ -27,7 +27,7 @@ import 'rxjs/add/operator/map';
   		this.rol=0;
   		this.buildingId = 1;
   		//this.urlApi = "http://slimapp/api/"; 
-			this.urlApi = "http://159.203.37.81/api/";
+			this.urlApi = "http://transelcapp.com/api/";
   	}
 
   	setUserId(value){

@@ -15,7 +15,7 @@ export class ReservationsProvider {
   constructor(public http: Http) {
     console.log('Hello ReservationsProvider Provider');
     //this.urlApi = "http://slimapp/api/";
-    this.urlApi = "http://localhost:8888/api/";
+    this.urlApi = "http://transelcapp.com/api/";
   }
   /**
    * get 

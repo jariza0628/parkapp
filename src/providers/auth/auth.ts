@@ -13,7 +13,7 @@ export class AuthProvider {
 
    userName: string;
    loggedIn: boolean;
-   url = 'http://localhost:8000/auth';
+   url = 'http://transelcapp.com/auth';
 
   constructor(public http: Http) {
   	this.userName = '';
