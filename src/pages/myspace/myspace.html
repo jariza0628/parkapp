@@ -88,7 +88,7 @@
 	    <p>{{fs.horario}}</p>
 		    </ion-col>
 		    <ion-col col-auto style="float: right;">
-		       <button ion-button icon-only clear (click)="DelFreeSpace(fs.id_calendario)">
+		       <button ion-button icon-only clear (click)="deleteCalendar(fs.id_calendario, fs.dia+'-'+ fs.mes+'-'+fs.anio)">
 		  <ion-icon name="trash"></ion-icon>
 		</button>
 		    </ion-col>

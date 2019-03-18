@@ -238,6 +238,8 @@ console.log("device!");
   }
   exitApp(){
     this.logOut();
+    localStorage.removeItem('serial');
+    localStorage.removeItem('email');
     this.platform.exitApp();
   }
   showAlert() {

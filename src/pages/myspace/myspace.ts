@@ -110,12 +110,28 @@ export class MyspacePage {
    
   }
 
-  DelFreeSpace(idcalendar){
-    this.parkService.DelFreeSpace(idcalendar);
+  DelFreeSpace(idcalendar, fecha){
+    this.parkService.DelFreeSpace(idcalendar, fecha);
     console.log('unlockSpace');
     this.showAlertDateDelete();
     this.recargar();
 
+  }
+  deleteCalendar(idcalendar, fecha){
+    this.parkService.deletecalendar(idcalendar, fecha).subscribe(
+      data =>{
+        console.log(data);
+        if(data.message==='Eliminado'){
+          this.showAlertDateDelete();
+        }
+        if(data.message==='EL ESPACIO ESTA SIENDO USADO ACTUALMENTE'){
+          this.spaceocup();
+        }
+      }, 
+      err =>{
+        console.log(err);
+      }
+    )
   }
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
@@ -162,6 +178,14 @@ export class MyspacePage {
     let alert = this.alertCtrl.create({
       title: 'Eliminado!!',
       subTitle: 'Fecha Borrada.',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  spaceocup() {
+    let alert = this.alertCtrl.create({
+      title: 'Espacio ocupado!!',
+      subTitle: 'Su espacio esta siendo utilizado actualmente y no puede ser eliminado.',
       buttons: ['OK']
     });
     alert.present();

@@ -16,7 +16,7 @@ export class ServicesParkProvider {
 
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-    //this.urlApi = "http://slimapp/api/";
+    // this.urlApi = "http://localhost:8888/api/";
     this.urlApi = "http://transelcapp.com/api/";
   }
   getHourNow() {
@@ -109,10 +109,10 @@ export class ServicesParkProvider {
       }
     );
   }
-   DelFreeSpace(idcalendar){
+   DelFreeSpace(idcalendar, fecha){
     return new Promise(
       resolve=>{
-        this.http.delete(this.urlApi + 'FreeDayByUser/delete/'+idcalendar)
+        this.http.delete(this.urlApi + 'FreeDayByUser/delete/'+idcalendar+'/'+fecha)
         .map(res => res.json())
         .subscribe((data1) => {
                  resolve(data1)
@@ -124,6 +124,13 @@ export class ServicesParkProvider {
       }
     );
   }
+
+  deletecalendar(idcalendar, fecha){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.delete(this.urlApi + 'FreeDayByUser/delete/'+idcalendar+'/'+fecha, options).map(res => res.json())
+  }
+
   postNovedad(id_user, titulo, descripcion) {
     let headers = new Headers;
     headers.append("content-type", "application/json");

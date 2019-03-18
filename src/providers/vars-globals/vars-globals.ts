@@ -26,7 +26,7 @@ import 'rxjs/add/operator/map';
   		this.utilizalugar = 0;
   		this.rol=0;
   		this.buildingId = 1;
-  		//this.urlApi = "http://slimapp/api/"; 
+  		// this.urlApi = "http://localhost:8888/api/"; 
 			this.urlApi = "http://transelcapp.com/api/";
   	}
 
