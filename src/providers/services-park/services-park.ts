@@ -16,8 +16,8 @@ export class ServicesParkProvider {
 
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-    // this.urlApi = "http://localhost:8888/api/";
-    this.urlApi = "http://transelcapp.com/api/";
+    this.urlApi = "http://localhost:8888/api/";
+    // this.urlApi = "http://transelcapp.com/api/";
   }
   getHourNow() {
     return this.http.get(this.urlApi + 'timenow')
