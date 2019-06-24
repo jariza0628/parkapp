@@ -14,6 +14,7 @@ import { ReservationsPage } from '../pages/reservations/reservations';
 
 import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
 import { PushServiceProvider } from '../providers/push-service/push-service';
+import { MilesPage } from '../pages/miles/miles';
 
 @Component({
   templateUrl: 'app.html'
@@ -44,7 +45,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', icon: 'home', component: HomePage },
       { title: 'Mi Perfil',icon: 'person', component: BlankPage },
-      { title: 'Mi espacio',icon: 'car', component: MyspacePage }
+      { title: 'Mi espacio',icon: 'car', component: MyspacePage },
+      { title: 'Mis millas', icon: 'plane',component: MilesPage }
+
       /*{ title: 'Soporte', icon: 'help-circle', component: NoveltyPage }*/
     ];
       this.pages2 = [
@@ -62,7 +65,8 @@ export class MyApp {
       this.pages4 = [
       { title: 'Home', icon: 'home',component: HomePage },
       { title: 'Mi Perfil', icon: 'person',component: BlankPage },
-      { title: 'Mi espacio', icon: 'car',component: MyspacePage }
+      { title: 'Mi espacio', icon: 'car',component: MyspacePage },
+      { title: 'Mis millas', icon: 'plane',component: MilesPage },
     ];
 
   }

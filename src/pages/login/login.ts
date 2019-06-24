@@ -62,6 +62,7 @@ export class LoginPage {
 						localStorage.setItem("id_usuario", data1.id_usuario);
 						localStorage.setItem("email", email);
 						localStorage.setItem("serial", clave);
+						this.updatePlayerId(data1.id_usuario);
 					},
 						err => {
 							console.log(err);
@@ -69,6 +70,22 @@ export class LoginPage {
 					)
 			}
 		);
+	}
+
+	updatePlayerId(idUser) {
+		let playerId;
+		playerId = sessionStorage.getItem('idPlayer');
+		console.log('IDS', playerId + 'USER ', idUser );
+		this.VarsGlobals.playerId(idUser, playerId).subscribe(
+			data => {
+			
+				
+				console.log('player save',data);
+			},
+			err => {
+				console.log('player save err' ,err);
+			}
+		)
 	}
 
 

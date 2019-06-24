@@ -14,8 +14,8 @@ export class ReservationsProvider {
 
   constructor(public http: Http) {
     console.log('Hello ReservationsProvider Provider');
-    this.urlApi = "http://localhost:8888/api/";
-    //this.urlApi = "http://transelcapp.com/api/";
+    this.urlApi = "http://192.168.43.223:8888/api/";
+   //  this.urlApi = "http://transelcapp.com/api/";
   }
   /**
    * get 
@@ -30,6 +30,14 @@ export class ReservationsProvider {
    */
   getReservationsByUser(id) {
     return this.http.get(this.urlApi + 'reservations/' + id)
+      .map(res => res.json())
+  }
+    /**
+   * Obtener por id usuario las reservas asignandas 
+   * @param id 
+   */
+  getReservationsNowByUser(id) {
+    return this.http.get(this.urlApi + 'reservations/asg/' + id)
       .map(res => res.json())
   }
   /**
@@ -48,5 +56,24 @@ export class ReservationsProvider {
       .map((res: Response) => { console.log(res); return { status: res.status, result: res.json() } });
  
   }
+  /****** Millas */
+  /** Milas por usuerio */
+  getMilesById(id) {
+    return this.http.get(this.urlApi + 'miles/detail/' + id)
+      .map(res => res.json())
+  }
+  getMilesTotals(id) {
+    return this.http.get(this.urlApi + 'miles/' + id)
+      .map(res => res.json())
+  }
+
+  getMilesHistory(id) {
+    return this.http.get(this.urlApi + 'miles/history/' + id)
+      .map(res => res.json())
+  }
+  getReservationAfter(){
+
+  }
+  
 
 }

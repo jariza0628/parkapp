@@ -95,6 +95,7 @@ export class ReservationsPage {
           this.presentToast('Reserva creada.');
         }, 
         err => {
+          this.getIduser();
           console.log(err);
         }
       )  
@@ -111,6 +112,15 @@ export class ReservationsPage {
       duration: 5000
     });
     toast.present();
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      this.getIduser();
+      refresher.complete();
+    }, 2000);
   }
 
 }

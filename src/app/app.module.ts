@@ -30,6 +30,7 @@ import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
 import { CarspaceComponent } from '../components/carspace/carspace';
 import { PushServiceProvider } from '../providers/push-service/push-service';
 import { ReservationsProvider } from '../providers/reservations/reservations';
+import { MilesPage } from '../pages/miles/miles';
 enableProdMode();
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ enableProdMode();
     NoveltyPage,
     DetailNoveltyPage,
     CarspaceComponent,
-    ReservationsPage
+    ReservationsPage,
+    MilesPage
     
   ],
   imports: [
@@ -71,7 +73,8 @@ enableProdMode();
     LoginPage,
     NoveltyPage,
     DetailNoveltyPage,
-    ReservationsPage
+    ReservationsPage,
+    MilesPage
     
   ],
   providers: [
