@@ -14,6 +14,7 @@ export class PushServiceProvider {
   constructor(private oneSignal: OneSignal, public platform: Platform) {
     console.log('Hello PushServiceProvider Provider');
     this.init_notifications();
+    
   }
   init_notifications() {
     if (this.platform.is('cordova')) {
@@ -24,7 +25,8 @@ export class PushServiceProvider {
         console.log('Notificacion recivida');
       });
       this.oneSignal.getIds().then(ids => {//player id del celular
-        this.one_id = ids.userId
+        this.one_id = ids.userId;
+        sessionStorage.setItem('idPlayer', this.one_id);
         console.log("Entro one promesa");
         console.log(this.one_id);
       })
@@ -37,5 +39,5 @@ export class PushServiceProvider {
       console.log('No corre en el navedador');
     }
   }
-
+ 
 }

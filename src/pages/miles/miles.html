@@ -1,0 +1,40 @@
+<!--
+  Generated template for the MilesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="azul">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Millas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h3>Resumen de tus millas</h3>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="plane" item-start></ion-icon>
+      {{miles}}
+      <ion-icon name="checkmark" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+  <h4>Historial de millas</h4>
+  <ion-list [virtualScroll]="items">
+
+    <ion-item *virtualItem="let item">
+     
+      <h2> {{ item.numero_millas }}</h2>
+      <p>{{ item.motivo }}</p>
+      <p item-end>{{ item.fecha | date:'mediumDate'}}</p>
+    </ion-item>
+
+  </ion-list>
+
+ 
+</ion-content>

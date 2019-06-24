@@ -14,7 +14,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-fab top right  *ngIf="so!='ios'">
+  <ion-fab top right *ngIf="so!='ios'">
     <button ion-fab mini>
       <ion-icon name="add"></ion-icon>
     </button>
@@ -62,6 +62,26 @@
       Puesto ocupado por: {{ userutilizaspace }}
     </ion-col>
   </ion-row>
+
+  <ion-row paddig0>
+    <ion-col col paddig0>
+      <ion-card no-margin>
+
+        <ion-card-content>
+          <h4 text-left no-margin><b>Resumen de tu reserva:</b> </h4>
+          <p text-left no-margin> Se te ha asignado el puesto 400, Jornada: Mañana.
+          </p>
+          <p text-left no-margin> Se te ha asignado el puesto 404
+            , Jornada: Tarde.
+            </p>
+        </ion-card-content>
+
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+
+
   <h3 padding class="disp">
     Disponibles Hoy
   </h3>
@@ -70,7 +90,7 @@
       <carspace puesto="{{fs.nombre}}" hora="{{fs.hora}}"></carspace>
     </ion-list>
   </div>
-  
+
 
   <ion-grid *ngIf="utilizalugar =='1'" style="padding: 0px !important;">
     <ion-row>
@@ -79,7 +99,8 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <button *ngIf="utilizalugar =='1'" (click)="unlockSpace()" ion-button block color="danger" style="margin-left: 5px;margin-right: 5px">Desbloquear Espacio</button>
+  <button *ngIf="utilizalugar =='1'" (click)="unlockSpace()" ion-button block color="danger"
+    style="margin-left: 5px;margin-right: 5px">Desbloquear Espacio</button>
 
 
 </ion-content>

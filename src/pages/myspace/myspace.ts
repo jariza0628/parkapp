@@ -105,6 +105,7 @@ export class MyspacePage {
       this.parkService.freeSpace(this.fechaenviada);
       this.showAlertDate();
       this.recargar();
+      
     }
 
    
@@ -117,6 +118,11 @@ export class MyspacePage {
     this.recargar();
 
   }
+  /**
+   * 
+   * @param idcalendar 
+   * @param fecha 
+   */
   deleteCalendar(idcalendar, fecha){
     this.parkService.deletecalendar(idcalendar, fecha).subscribe(
       data =>{
