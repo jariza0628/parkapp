@@ -34,7 +34,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-card (click)="goToBlocks(1)" class="cardpark">
+  <ion-card *ngIf="parametros[0].modo_liberacion==='SI'" (click)="goToBlocks(1)" class="cardpark">
     <img src="assets/img/image.jpg" />
     <div class="card-title">Parqueadero Transelca</div>
     <div class="card-subtitle">Ver Espacios Disponibles</div>
@@ -43,9 +43,13 @@
   <ion-grid paddig0 style="padding: 0px !important;">
     <ion-row paddig0>
       <ion-col col paddig0>
-        <div class="cardt">
+        <div class="cardt" *ngIf="parametros[0].modo_liberacion==='SI'">
           <h5 style="text-align: center;margin: 3px;">Disponibles HOY {{ glo }}</h5>
           <p style="font-size: 22px;margin: 3px;color: #00d13b">{{ numSpaceFree }}</p>
+        </div>
+        <div class="cardt" *ngIf="parametros[0].modo_liberacion==='NO'">
+          <h5 style=" text-align: center;margin: 3px;">Reservas Asignadas</h5>
+          <p style="font-size: 22px;margin: 3px;color: #00d13b">{{num_reservas}}</p>
         </div>
       </ion-col>
       <ion-col col>
@@ -53,6 +57,21 @@
           <h5 style="text-align: center;margin: 3px;">Total Espacios</h5>
           <p style="font-size: 22px;margin: 3px;color: #00d13b">{{ numSpace }}</p>
         </div>
+      </ion-col>
+    </ion-row>
+    <!-- Info para Propietrarios -->
+    <ion-row>
+      <ion-col cl col-12 class="full" text-center>
+        <p class="esp">422 </p>
+        <p no-margin>Mi espacio</p>
+      </ion-col>
+    </ion-row>
+    <ion-row text-center padding>
+      <ion-col>
+        <button ion-button [disabled]="false" outline block color="danger">Liberar Hoy</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button [disabled]="false" outline block color="secondary">Liberar Mañana</button>
       </ion-col>
     </ion-row>
 
@@ -63,17 +82,15 @@
     </ion-col>
   </ion-row>
 
-  <ion-row paddig0>
+  <ion-row paddig0 *ngIf="reservas_actuales">
     <ion-col col paddig0>
       <ion-card no-margin>
 
         <ion-card-content>
           <h4 text-left no-margin><b>Resumen de tu reserva:</b> </h4>
-          <p text-left no-margin> Se te ha asignado el puesto 400, Jornada: Mañana.
+          <p text-left no-margin *ngFor="let item of reservas_actuales"> Se te ha asignado el puesto
+            {{item.numero_espacio}}, Jornada: {{item.jornada}}.
           </p>
-          <p text-left no-margin> Se te ha asignado el puesto 404
-            , Jornada: Tarde.
-            </p>
         </ion-card-content>
 
       </ion-card>
@@ -82,10 +99,10 @@
 
 
 
-  <h3 padding class="disp">
+  <h3 padding class="disp" *ngIf="parametros[0].modo_liberacion==='SI'">
     Disponibles Hoy
   </h3>
-  <div *ngIf="utilizalugar =='0'">
+  <div *ngIf="utilizalugar =='0' && parametros[0].modo_liberacion==='SI'">
     <ion-list (click)="goToSpacedetail(fs.espacioid)" *ngFor="let fs of spacesFree" class="no-margin">
       <carspace puesto="{{fs.nombre}}" hora="{{fs.hora}}"></carspace>
     </ion-list>

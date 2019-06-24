@@ -36,7 +36,10 @@ export class HomePage {
   public so: any;
   public color: string;
   public hora: string;
-  reservas_actuales: Array<any>;
+  reservas_actuales: any;
+  num_reservas: any;
+  //Parametros
+  parametros: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -68,12 +71,8 @@ export class HomePage {
     this.color = "gray";
     this.hora = "";
     // Reservas actuales
-    this.reservas_actuales = [
-      {
-        puesto: '',
-        jornada: ''
-      }
-    ]
+    this.reservas_actuales = [];
+
     platform.ready().then(() => {
       console.log("device!");
       if (this.platform.is('android')) {
@@ -89,6 +88,10 @@ export class HomePage {
 
     });
 
+    this.parametros = JSON.parse(sessionStorage.getItem('parametros'));
+    console.log('home parametros ', this.parametros);
+
+
   }
 
 
@@ -96,8 +99,7 @@ export class HomePage {
     this.loader.present();
     this.services();
     this.getReservatiosNow();
-
-
+    this.getNumberReservasAsg();
     console.log('ionViewDidLoad Home');
   }
 
@@ -105,19 +107,11 @@ export class HomePage {
     //mostrar varibles
     this.userutilizaspace = null;
     this.getReservatiosNow();
-
-
-
-
     //fin mostrar variables
-
-
     if (this.rol != null) {
       this.varsGlobals.setUserId(this.user);
       this.varsGlobals.setrol(this.rol);
       this.varsGlobals.setUsuario(this.nombre);
-
-
       this.userId = this.varsGlobals.getUserId();
       this.nombre2 = this.varsGlobals.getUsuario();
       if (this.nombre != null) {
@@ -209,20 +203,39 @@ export class HomePage {
       }
     );
   }
-
+  /**
+   * Reservas asignada al usuario
+   */
   getReservatiosNow() {
- 
+
     let id_user;
     id_user = localStorage.getItem('id_usuario');
     this._ReservationsProvider.getReservationsNowByUser(id_user).subscribe(
       data => {
         console.log('getReservatiosNow', data);
-        
+        if (data.message) {
+          this.reservas_actuales = null;
+        } else {
+          this.reservas_actuales = (data);
+        }
       }
       , err => {
         console.log(err);
       }
     )
+  }
+  getNumberReservasAsg() {
+    this._ReservationsProvider.getNumberReservations().subscribe(
+      data => {
+        this.num_reservas = data[0].total
+        console.log('num reservatiosn', this.num_reservas);
+      },
+      err => {
+        console.log(err);
+
+      }
+    )
+
   }
   getNombreuser(iduser) {//que espacio ocupo rol 3 y 4
     this.parkService.getUser(iduser).subscribe(
@@ -239,8 +252,6 @@ export class HomePage {
         if (this.id_space != null) {
           this.varsGlobals.setIdSpace(this.id_space);
         }
-
-
       }
     );
     setTimeout(() => {
@@ -285,14 +296,12 @@ export class HomePage {
       refresher.complete();
     }, 2000);
   }
-
   logOut() {
     localStorage.removeItem('email');
     localStorage.removeItem('serial');
   }
+
   refresh() {
-
-
     setTimeout(() => {
       console.log('Async operation has ended');
       this.services();

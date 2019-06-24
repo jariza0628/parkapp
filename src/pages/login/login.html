@@ -1,43 +1,36 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-	<ion-navbar color="azul">
-		<ion-title>Inicio de sesión</ion-title>
-	</ion-navbar>
-
-</ion-header>
-
-
-<ion-content class="cards-bg fondo">
-	     <div style="text-align: center;margin-top: 30px">
-			<img src="assets/img/icon.png" width="100px">
-		</div>
-	<ion-card class="transparente">
-		
-		
-		<ion-card-content>
-			<ion-list>
-
-				<ion-item class="transparente">
-					<ion-label floating>Usuario</ion-label>
-					<ion-input type="text" [(ngModel)]="email"></ion-input>
-				</ion-item>
-
-				<ion-item class="transparente">
-					<ion-label floating>Contraseña</ion-label>
-					<ion-input type="password" [(ngModel)]="clave"></ion-input>
-				</ion-item>
-				<div padding>
-					<button ion-button block (click)=doLogin()>Ingresar</button>
+<ion-content no-padding>
+	<ion-grid no-padding>
+		<ion-row>
+			<div class="header">
+				<p no-margin>Inicio de sesión</p>
+				<img src="assets/img/icon.png">
+			</div>
+		</ion-row>
+		<ion-row class="form">
+			<ion-col class="full" col-12 text-center>
+				<p class="title" text-center>Bienvenido a freeParking</p>
+			</ion-col>
+			<ion-col class="full">
+				<ion-list>
+					<ion-item class="border-none">
+						<ion-label floating>Usuario</ion-label>
+						<ion-input type="text" [(ngModel)]="email"></ion-input>
+					</ion-item>
+					<ion-item class="border-none">
+						<ion-label floating>Contraseña</ion-label>
+						<ion-input [(ngModel)]="clave" style="border-bottom: 1px solid #c8c7cc" type="password">
+						</ion-input>
+					</ion-item>
+				</ion-list>
+				<div padding text-center>
+					<button ion-button color="azul" outline (click)=doLogin()>Iniciar sesión</button>
+					<ion-item class="border-none">
+						<ion-label color="azul">Recordar credenciales</ion-label>
+						<ion-toggle color="azul" checked="false"></ion-toggle>
+					</ion-item>
+					<p>RECUPERAR CONTRASEÑA</p>
 				</div>
-
-
-			</ion-list>
-		</ion-card-content>
-	</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>

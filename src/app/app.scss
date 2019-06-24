@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/v2/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -16,5 +15,8 @@
 // automatically applied to the <body> element in the app.
 
 .list-md .item-block .item-inner {
-    border-bottom: none;
+  border-bottom: none;
+}
+.full {
+  width: 100%;
 }

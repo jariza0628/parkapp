@@ -13,12 +13,13 @@ import 'rxjs/add/operator/toPromise';
 export class ServicesParkProvider {
   public urlApi: string;
   public data1: any;
-
+   
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-    this.urlApi = "http://192.168.43.223:8888/api/";
+    this.urlApi = "http://192.168.1.9:8888/api/";
         //this.urlApi = "http://transelcapp.com/api/";
   }
+
   getHourNow() {
     return this.http.get(this.urlApi + 'timenow')
       .map(res => res.json())
@@ -27,6 +28,7 @@ export class ServicesParkProvider {
   	 return this.http.get(this.urlApi + 'buildings')
      .map(res => res.json())
   }
+ 
    getSpaceFreeToday(){
      return this.http.get(this.urlApi + 'freeSpaces')
      .map(res => res.json())

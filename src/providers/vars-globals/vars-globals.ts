@@ -26,10 +26,16 @@ export class VarsGlobalsProvider {
 		this.utilizalugar = 0;
 		this.rol = 0;
 		this.buildingId = 1;
-		this.urlApi = "http://192.168.43.223:8888/api/";
+		this.urlApi = "http://192.168.1.9:8888/api/";
 		// this.urlApi = "http://transelcapp.com/api/";
 	}
-
+	/**
+	 * Obtener parametros para app
+	 */
+	getParameters() {
+		return this.http.get(this.urlApi + 'parametros')
+			.map(res => res.json())
+	}
 	setUserId(value) {
 		this.userId = value;
 	}
@@ -98,7 +104,7 @@ export class VarsGlobalsProvider {
 	playerId(iduser, playerId) {
 		let headers = new Headers;
 		headers.append("content-type", "application/json");
-		return this.http.post(this.urlApi + 'playerid', {  iduser: iduser,playerid: playerId }, { headers: headers })
+		return this.http.post(this.urlApi + 'playerid', { iduser: iduser, playerid: playerId }, { headers: headers })
 			.map((res: Response) => { console.log(res); return { status: res.status, result: res.json() } });
 	}
 

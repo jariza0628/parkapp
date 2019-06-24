@@ -14,7 +14,7 @@ export class ReservationsProvider {
 
   constructor(public http: Http) {
     console.log('Hello ReservationsProvider Provider');
-    this.urlApi = "http://192.168.43.223:8888/api/";
+    this.urlApi = "http://192.168.1.9:8888/api/";
    //  this.urlApi = "http://transelcapp.com/api/";
   }
   /**
@@ -38,6 +38,13 @@ export class ReservationsProvider {
    */
   getReservationsNowByUser(id) {
     return this.http.get(this.urlApi + 'reservations/asg/' + id)
+      .map(res => res.json())
+  }
+  /**
+  * Obtine el numero de reservas asignadas
+  */
+  getNumberReservations() {
+    return this.http.get(this.urlApi + 'reservationsnumber')
       .map(res => res.json())
   }
   /**

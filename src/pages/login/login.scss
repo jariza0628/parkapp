@@ -1,18 +1,41 @@
 page-login {
-.fondo{
-	    background-image: url(https://s-media-cache-ak0.pinimg.com/originals/2b/45/cf/2b45cfec4c0d3c56aed4ccd30b61bd3a.jpg);
-    background-size: cover;
-
-}
-.transparente{
-	background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 5px;
-}
-.ion-card-content {
-    display: block;
-    background-color: rgba(255, 255, 255, 0.38);
-}
-.text-input-md {
-    background-color: rgb(255, 255, 255);
-}
+  .full {
+    width: 100%;
+  }
+  font-family: Arial, Helvetica, sans-serif;
+  .header {
+    height: 200px;
+    background-color: #55acee;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.26);
+    p {
+      padding-top: 30px;
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    img {
+      width: 100px;
+      margin-top: 20px;
+    }
+  }
+  .form {
+    color: #55acee !important;
+    .title {
+      color: #55acee;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  .item-md {
+    color: #55acee;
+  }
+  .item-ios {
+    color: #55acee;
+  }
+  .border-none {
+    border: none !important;
+  }
 }
