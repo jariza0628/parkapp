@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, MenuController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import {
+  IonicPage, NavController, MenuController,
+  NavParams, LoadingController, AlertController, ModalController
+} from 'ionic-angular';
 import { BlocksPage } from '../blocks/blocks';
 import { ServicesParkProvider } from '../../providers/services-park/services-park';
 import { VarsGlobalsProvider } from '../../providers/vars-globals/vars-globals';
@@ -7,6 +10,7 @@ import { DetailSpacePage } from '../detail-space/detail-space';
 import { IonicStorageModule } from '@ionic/storage';
 import { Platform } from 'ionic-angular';
 import { ReservationsProvider } from '../../providers/reservations/reservations';
+import { ModalJornadaPage } from '../modal-jornada/modal-jornada';
 
 
 
@@ -40,7 +44,22 @@ export class HomePage {
   num_reservas: any;
   //Parametros
   parametros: any;
+  hoy: String;
+  man: String;
+
+  public dia: string;
+  public mes: string;
+  public anio: number;
+  public dia2: string;
+  public mes2: string;
+  public anio2: number;
+  public myDate: string;
+  public myDate2: string;
+  public fechaenviada: string;
+  public jornada: string;
+  public userID: string;
   constructor(
+    public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
     public parkService: ServicesParkProvider,
@@ -101,6 +120,16 @@ export class HomePage {
     this.getReservatiosNow();
     this.getNumberReservasAsg();
     console.log('ionViewDidLoad Home');
+  }
+
+  presentProfileModal() {
+    let profileModal = this.modalCtrl.create(ModalJornadaPage, { userId: 8675309 });
+    profileModal.present();
+  }
+
+  chageOp(){
+    console.log('change OP', this.hoy);
+    
   }
 
   services() {
@@ -299,6 +328,45 @@ export class HomePage {
   logOut() {
     localStorage.removeItem('email');
     localStorage.removeItem('serial');
+  }
+
+
+  guardarLiberacion(jornada, sumdias: number) {
+    let mm: string;
+    let dd: string;
+    //  20190626-20190626-107-0 formato de liberacion 
+    let hoy = new Date();
+    dd = String(hoy.getDate() + sumdias );
+    mm = String(hoy.getMonth() + 1);
+    let yyyy = hoy.getFullYear();
+
+    console.log('fecha: dia ' + dd + 'mes ' + mm + 'añi' + yyyy);
+
+    if (mm.length == 1) {
+      mm = "0" + mm;
+    }
+    if (dd.length == 1) {
+      dd = "0" + dd;
+    }
+    this.anio = yyyy;
+    this.mes = mm;
+    this.dia = dd;
+    this.anio2 = yyyy;
+    this.mes2 = mm;
+    this.dia2 = dd;
+    this.jornada = jornada;
+    if (this.varsGlobals.getUserId().length == 1) {
+      this.userID = "00" + this.varsGlobals.getUserId();
+    }
+    if (this.varsGlobals.getUserId().length == 2) {
+      this.userID = "0" + this.varsGlobals.getUserId();
+    }
+    if (this.varsGlobals.getUserId().length == 3) {
+      this.userID = this.varsGlobals.getUserId();
+    }
+    this.fechaenviada = this.anio + "" + this.mes + "" + this.dia + "-" + this.anio2 + "" + this.mes2 + "" + this.dia2 + "-" + this.userID + "-" + this.jornada;
+    console.log(this.fechaenviada);
+    //this.parkService.freeSpace(this.fechaenviada);
   }
 
   refresh() {

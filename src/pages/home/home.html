@@ -66,12 +66,29 @@
         <p no-margin>Mi espacio</p>
       </ion-col>
     </ion-row>
-    <ion-row text-center padding>
+    <ion-row text-center>
       <ion-col>
-        <button ion-button [disabled]="false" outline block color="danger">Liberar Hoy</button>
+        <ion-item>
+          <ion-label>Liberar Hoy</ion-label>
+          <ion-select [(ngModel)]="hoy" cancelText="Cancelar" okText="Liberar" (ionChange)="guardarLiberacion(hoy, 0)">
+            <ion-option value="0">Todo el dia</ion-option>
+            <ion-option value="1">Mañana</ion-option>
+            <ion-option value="2">Tarde</ion-option>
+          </ion-select>
+        </ion-item>
+        <!--
+          <button ion-button [disabled]="false" (click)="presentProfileModal()" outline block color="danger">Liberar Hoy</button>
+        -->
       </ion-col>
       <ion-col>
-        <button ion-button [disabled]="false" outline block color="secondary">Liberar Mañana</button>
+        <ion-item>
+          <ion-label>Liberar Mañana</ion-label>
+          <ion-select [(ngModel)]="man" cancelText="Cancelar" okText="Liberar" (ionChange)="guardarLiberacion(hoy, 1)">
+            <ion-option value="0">Todo el dia</ion-option>
+            <ion-option value="1">Mañana</ion-option>
+            <ion-option value="2">Tarde</ion-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
     </ion-row>
 

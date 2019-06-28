@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular 2 DI.
+  20190626-20190626-107-0 formato de liberacion
 */
 @Injectable()
 export class ServicesParkProvider {
@@ -16,7 +17,7 @@ export class ServicesParkProvider {
    
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-    this.urlApi = "http://192.168.1.9:8888/api/";
+    this.urlApi = "http://192.168.1.4:8888/api/";
         //this.urlApi = "http://transelcapp.com/api/";
   }
 

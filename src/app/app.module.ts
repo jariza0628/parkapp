@@ -23,14 +23,16 @@ import { ReservationsPage } from '../pages/reservations/reservations';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ServicesParkProvider } from '../providers/services-park/services-park';
- 
-import {enableProdMode} from '@angular/core';
+
+import { enableProdMode } from '@angular/core';
 import { AuthProvider } from '../providers/auth/auth';
 import { VarsGlobalsProvider } from '../providers/vars-globals/vars-globals';
 import { CarspaceComponent } from '../components/carspace/carspace';
 import { PushServiceProvider } from '../providers/push-service/push-service';
 import { ReservationsProvider } from '../providers/reservations/reservations';
 import { MilesPage } from '../pages/miles/miles';
+import { ModalJornadaPage } from '../pages/modal-jornada/modal-jornada';
+
 enableProdMode();
 @NgModule({
   declarations: [
@@ -49,8 +51,9 @@ enableProdMode();
     DetailNoveltyPage,
     CarspaceComponent,
     ReservationsPage,
-    MilesPage
-    
+    MilesPage,
+    ModalJornadaPage
+
   ],
   imports: [
     HttpModule,
@@ -74,14 +77,15 @@ enableProdMode();
     NoveltyPage,
     DetailNoveltyPage,
     ReservationsPage,
-    MilesPage
-    
+    MilesPage,
+    ModalJornadaPage
+
   ],
   providers: [
     IonicStorageModule,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     ServicesParkProvider,
     AuthProvider,
     VarsGlobalsProvider,
@@ -90,5 +94,5 @@ enableProdMode();
     ReservationsProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
 
