@@ -16,7 +16,7 @@ export class ServicesParkProvider {
    
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-    this.urlApi = "http://192.168.1.9:8888/api/";
+		this.urlApi = "http://192.168.100.178:8888/api/";
         //this.urlApi = "http://transelcapp.com/api/";
   }
 
