@@ -14,8 +14,8 @@ export class ReservationsProvider {
 
   constructor(public http: Http) {
     console.log('Hello ReservationsProvider Provider');
-		this.urlApi = "http://192.168.100.178:8888/api/";
-   //  this.urlApi = "http://transelcapp.com/api/";
+    //this.urlApi = "http://192.168.100.178:8888/api/";
+    this.urlApi = "http://transelcapp.com/api/";
   }
   /**
    * get 
@@ -32,10 +32,10 @@ export class ReservationsProvider {
     return this.http.get(this.urlApi + 'reservations/' + id)
       .map(res => res.json())
   }
-    /**
-   * Obtener por id usuario las reservas asignandas 
-   * @param id 
-   */
+  /**
+ * Obtener por id usuario las reservas asignandas 
+ * @param id 
+ */
   getReservationsNowByUser(id) {
     return this.http.get(this.urlApi + 'reservations/asg/' + id)
       .map(res => res.json())
@@ -59,9 +59,9 @@ export class ReservationsProvider {
   newReservation(jornada, id_user) {
     let headers = new Headers;
     headers.append("content-type", "application/json");
-   return this.http.post(this.urlApi + 'reservations', { jornada: jornada, iduser: id_user }, { headers: headers })
+    return this.http.post(this.urlApi + 'reservations', { jornada: jornada, iduser: id_user }, { headers: headers })
       .map((res: Response) => { console.log(res); return { status: res.status, result: res.json() } });
- 
+
   }
   /****** Millas */
   /** Milas por usuerio */
@@ -78,9 +78,12 @@ export class ReservationsProvider {
     return this.http.get(this.urlApi + 'miles/history/' + id)
       .map(res => res.json())
   }
-  getReservationAfter(){
+  getReservationAfter() {
 
   }
-  
+  /**
+   * Traer los epsacion asigandos a mi reserva por id_user
+   */
+ 
 
 }

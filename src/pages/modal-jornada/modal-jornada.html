@@ -1,0 +1,31 @@
+<div class="modal">
+  <ion-content padding class="box-modal">
+    <div>
+      <ion-list radio-group [(ngModel)]="jornada">
+
+        <ion-list-header>
+          ¿Que jonada desea liberar?
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Todo el dia</ion-label>
+          <ion-radio value="0" checked></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Mañana</ion-label>
+          <ion-radio value="duesenberg"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Tarde</ion-label>
+          <ion-radio value="hudson"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div text-center class="boton">
+      <button class="btn-siguiente" (click)="aceptar()" ion-button>Liberar</button>
+      <button class="btn-siguiente" (click)="fecha()" ion-button>Cancelar</button>
+    </div>
+  </ion-content>
+</div>

@@ -75,15 +75,15 @@ export class LoginPage {
 	updatePlayerId(idUser) {
 		let playerId;
 		playerId = sessionStorage.getItem('idPlayer');
-		console.log('IDS', playerId + 'USER ', idUser );
+		console.log('IDS', playerId + 'USER ', idUser);
 		this.VarsGlobals.playerId(idUser, playerId).subscribe(
 			data => {
-			
-				
-				console.log('player save',data);
+
+
+				console.log('player save', data);
 			},
 			err => {
-				console.log('player save err' ,err);
+				console.log('player save err', err);
 			}
 		)
 	}
@@ -106,6 +106,7 @@ export class LoginPage {
 			this.storage.set('iduser', data.id_usuario);
 			this.VarsGlobals.setbuildingId(1);//solo transelca edificio
 			this.VarsGlobals.setrol(data.rol);
+			sessionStorage.setItem('rol', data.rol);
 			this.VarsGlobals.setUsuario(data.nombre + " " + data.apellido)
 			this.storage.set('username', data.nombre);
 			this.ionViewDidEnter();

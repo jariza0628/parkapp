@@ -60,18 +60,35 @@
       </ion-col>
     </ion-row>
     <!-- Info para Propietrarios -->
-    <ion-row>
+    <ion-row *ngIf="roluser!=='3'">
       <ion-col cl col-12 class="full" text-center>
         <p class="esp">422 </p>
         <p no-margin>Mi espacio</p>
       </ion-col>
     </ion-row>
-    <ion-row text-center padding>
+    <ion-row text-center *ngIf="userLocalStorage === true && roluser!=='3'">
       <ion-col>
-        <button ion-button [disabled]="false" outline block color="danger">Liberar Hoy</button>
+        <ion-item>
+          <ion-label>Liberar Hoy</ion-label>
+          <ion-select [(ngModel)]="hoy" cancelText="Cancelar" okText="Liberar" (ionChange)="guardarLiberacion(hoy, 0)">
+            <ion-option value="0">Todo el dia</ion-option>
+            <ion-option value="1">Mañana</ion-option>
+            <ion-option value="2">Tarde</ion-option>
+          </ion-select>
+        </ion-item>
+        <!--
+          <button ion-button [disabled]="false" (click)="presentProfileModal()" outline block color="danger">Liberar Hoy</button>
+        -->
       </ion-col>
       <ion-col>
-        <button ion-button [disabled]="false" outline block color="secondary">Liberar Mañana</button>
+        <ion-item>
+          <ion-label>Liberar Mañana</ion-label>
+          <ion-select [(ngModel)]="man" cancelText="Cancelar" okText="Liberar" (ionChange)="guardarLiberacion(hoy, 1)">
+            <ion-option value="0">Todo el dia</ion-option>
+            <ion-option value="1">Mañana</ion-option>
+            <ion-option value="2">Tarde</ion-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
     </ion-row>
 
@@ -82,9 +99,9 @@
     </ion-col>
   </ion-row>
 
-  <ion-row paddig0 *ngIf="reservas_actuales">
+  <ion-row no-padding *ngIf="reservas_actuales">
     <ion-col col paddig0>
-      <ion-card no-margin>
+      <ion-card no-margin no-padding>
 
         <ion-card-content>
           <h4 text-left no-margin><b>Resumen de tu reserva:</b> </h4>
@@ -115,9 +132,17 @@
         <ion-icon name="car"></ion-icon> Estoy utilizando el espacio: {{ SpaceOccupiedForMe }}
       </ion-col>
     </ion-row>
+
   </ion-grid>
-  <button *ngIf="utilizalugar =='1'" (click)="unlockSpace()" ion-button block color="danger"
-    style="margin-left: 5px;margin-right: 5px">Desbloquear Espacio</button>
+
+
+  <ion-grid>
+    <ion-row>
+      <button *ngIf="utilizalugar =='1'" (click)="unlockSpace()" ion-button block color="danger"
+        style="margin-left: 5px;margin-right: 5px">Desbloquear Espacio</button>
+    </ion-row>
+  </ion-grid>
+
 
 
 </ion-content>

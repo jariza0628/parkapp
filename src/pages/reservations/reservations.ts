@@ -33,29 +33,28 @@ export class ReservationsPage {
   /**
    * Consultar el id usario del localstorage
    */
-  getIduser(){
-    if(localStorage.getItem('id_usuario')){
+  getIduser() {
+    if (localStorage.getItem('id_usuario')) {
       this.id = localStorage.getItem('id_usuario');
       this.getReservations();
-    }else{
-       this.presentToast('Error al consultar tus reservas.');
+    } else {
+      this.presentToast('Error al consultar tus reservas.');
     }
   }
   /**
    * traer todas las reservas de un usario
    */
-  getReservations(){
+  getReservations() {
     this._ReservationsProvider.getReservationsByUser(this.id).subscribe(
       data => {
         console.log(data);
-        if(data.length > 0){
+        if (data.length > 0) {
           this.reservation = data;
         }
-      }, 
+      },
       err => {
         console.log(err);
         this.presentToast('Error al consultar tus reservas.');
-
       }
     )
   }
@@ -63,7 +62,7 @@ export class ReservationsPage {
    * Elimiar reserva
    * @param id 
    */
-  deleteReservatiosById(id){
+  deleteReservatiosById(id) {
     this._ReservationsProvider.deleteReservation(id).subscribe(
       data => {
         console.log(data);
@@ -71,7 +70,7 @@ export class ReservationsPage {
         this.reservation = null;
         this.presentToast('Reserva eliminada.');
 
-      }, 
+      },
       err => {
         console.log(err);
         this.presentToast('Error al eliminar tu reservas.');
@@ -79,32 +78,32 @@ export class ReservationsPage {
       }
     )
   }
-  change(j){
+  change(j) {
     this.jornada = null;
     this.jornada = j;
     console.log('jornada', this.jornada);
-    
+
   }
 
   save() {
-    if(this.jornada){
+    if (this.jornada) {
       this._ReservationsProvider.newReservation(this.jornada, this.id).subscribe(
         data => {
           console.log(data);
           this.getIduser();
           this.presentToast('Reserva creada.');
-        }, 
+        },
         err => {
           this.getIduser();
           console.log(err);
         }
-      )  
-    }else{
+      )
+    } else {
       this.presentToast('Selecciona una jornada');
     }
-    
+
   }
- 
+
 
   presentToast(text) {
     const toast = this.toastCtrl.create({

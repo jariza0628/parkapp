@@ -146,5 +146,11 @@ export class MyApp {
       }
     )
   }
+  logOut() {
+    localStorage.removeItem('email');
+    localStorage.removeItem('serial');
+    localStorage.removeItem('id_usuario');
+    sessionStorage.removeItem('rol');
+  }
 
 }
