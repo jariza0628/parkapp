@@ -28,7 +28,7 @@ export class LoginPage {
 		public VarsGlobals: VarsGlobalsProvider,
 		public alertCtrl: AlertController,
 		public menu: MenuController,
-		private storage: Storage
+		private storage: Storage,
 	) {
 
 	}
@@ -118,4 +118,31 @@ export class LoginPage {
 		this.navCtrl.setRoot(HomePage, { id_usuario: id_usuario, rol: rol, nombre: nombre });
 	}
 
+	showPrompt() {
+		const prompt = this.alertCtrl.create({
+			title: 'Recuperar Contraseña',
+			message: "Escribe tu usuario, recuerda que debe coincidir con tu correo corporativo para recibir el correo de recuperación.",
+			inputs: [
+				{
+					name: 'title',
+					placeholder: 'Title'
+				},
+			],
+			buttons: [
+				{
+					text: 'Cancelar',
+					handler: data => {
+						console.log('Cancel clicked');
+					}
+				},
+				{
+					text: 'Recuperar',
+					handler: data => {
+						console.log('Saved clicked');
+					}
+				}
+			]
+		});
+		prompt.present();
+	}
 }
