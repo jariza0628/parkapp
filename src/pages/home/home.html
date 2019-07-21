@@ -60,7 +60,7 @@
       </ion-col>
     </ion-row>
     <!-- Info para Propietrarios -->
-    <ion-row *ngIf="roluser!=='3'">
+    <ion-row *ngIf="roluser && roluser!=='3' && localSuser !='' ">
       <ion-col cl col-12 class="full" text-center>
         <p class="esp">422 </p>
         <p no-margin>Mi espacio</p>

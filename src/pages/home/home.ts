@@ -60,6 +60,7 @@ export class HomePage {
   public fechaenviada: string;
   public jornada: string;
   public userID: string;
+  localSuser: any;
   constructor(
     public modalCtrl: ModalController,
     public navCtrl: NavController,
@@ -93,7 +94,8 @@ export class HomePage {
     this.hora = "";
     // Reservas actuales
     this.reservas_actuales = [];
-
+    //*** */
+    this.localSuser = localStorage.getItem('id_usuario')
     platform.ready().then(() => {
       console.log("device!");
       if (this.platform.is('android')) {

@@ -20,6 +20,7 @@ import 'rxjs/add/operator/map';
 export class LoginPage {
 	public email: any;
 	public clave: any;
+	toggle: any;
 	constructor(
 		public http: Http,
 		public navCtrl: NavController,
@@ -60,8 +61,13 @@ export class LoginPage {
 						this.VarsGlobals.setUserId(data1.id_usuario);
 						this.VarsGlobals.setUsuario(email);
 						localStorage.setItem("id_usuario", data1.id_usuario);
-						localStorage.setItem("email", email);
-						localStorage.setItem("serial", clave);
+						console.log('toogle', this.toggle);
+
+						if (this.toggle) {
+							localStorage.setItem("email", email);
+							localStorage.setItem("serial", clave);
+						}
+
 						this.updatePlayerId(data1.id_usuario);
 					},
 						err => {
