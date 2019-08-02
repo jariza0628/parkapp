@@ -17,7 +17,7 @@ export class ServicesParkProvider {
 
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-		this.urlApi = "http://159.203.37.81/api/";
+		this.urlApi = "http://192.168.1.6:8888/api/";
     // this.urlApi = "http://transelcapp.com/api/";
   }
 
@@ -79,6 +79,10 @@ export class ServicesParkProvider {
   }
   getSpaceOccupiedForMe(idUser) {
     return this.http.get(this.urlApi + 'SpaceOccupiedForMe/' + idUser)
+      .map(res => res.json())
+  }
+  getMyspaceByIduser(idUser) {
+    return this.http.get(this.urlApi + 'idSpaceNumberByuser/' + idUser)
       .map(res => res.json())
   }
   freeSpace(info) {//recibe un string con 2 fechas y el usuario se separa con php en el servidor

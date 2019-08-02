@@ -48,7 +48,7 @@ export class HomePage {
   parametros: any;
   hoy: String;
   man: String;
-
+  myspace: any;
   public dia: string;
   public mes: string;
   public anio: number;
@@ -174,6 +174,7 @@ export class HomePage {
     //mostrar varibles
     this.userutilizaspace = null;
     this.getReservatiosNow();
+    this.getMyspace();
     //fin mostrar variables
     if (this.rol != null) {
       this.varsGlobals.setUserId(this.user);
@@ -261,6 +262,14 @@ export class HomePage {
   }
   goToSpacedetail(spaceId) {
     this.navCtrl.push(DetailSpacePage, { spaceId: spaceId });
+  }
+  getMyspace(){
+    this.parkService.getMyspaceByIduser(this.localSuser).subscribe(
+      data => {
+        console.log('Mi espacios', data);
+        this.myspace = data.numero;
+      }
+    )
   }
   SpaceOccupiedForMeUser(iduser) {//que espacio ocupo rol 3 y 4
     this.parkService.getSpaceOccupiedForMe(this.userId).subscribe(

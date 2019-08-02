@@ -60,10 +60,10 @@
       </ion-col>
     </ion-row>
     <!-- Info para Propietrarios -->
-    <ion-row *ngIf="roluser && roluser!=='3' && localSuser !='' ">
+    <ion-row *ngIf="roluser && roluser!=='3' && localSuser !='' && myspace">
       <ion-col cl col-12 class="full" text-center>
-        <p class="esp">422 </p>
-        <p no-margin>Mi espacio</p>
+        <p class="esp">{{myspace}} </p>
+        <p no-margin padding-top><b>Mi espacio</b></p>
       </ion-col>
     </ion-row>
     <ion-row text-center *ngIf="userLocalStorage === true && roluser!=='3'">
