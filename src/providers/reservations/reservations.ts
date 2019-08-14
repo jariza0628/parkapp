@@ -14,7 +14,7 @@ export class ReservationsProvider {
 
   constructor(public http: Http) {
     console.log('Hello ReservationsProvider Provider');
-		this.urlApi = "http://192.168.1.6:8888/api/";
+		this.urlApi = "http://159.203.37.81/api/";
     //this.urlApi = "http://transelcapp.com/api/";
   }
   /**
