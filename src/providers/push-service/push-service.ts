@@ -13,7 +13,7 @@ export class PushServiceProvider {
   one_id: any;
   constructor(private oneSignal: OneSignal, public platform: Platform) {
     console.log('Hello PushServiceProvider Provider');
-    this.init_notifications();
+    // .init_notifications();
 
   }
   init_notifications() {

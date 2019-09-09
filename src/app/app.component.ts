@@ -68,6 +68,7 @@ export class MyApp {
       { title: 'Mi Perfil', icon: 'person', component: BlankPage },
       { title: 'Mi espacio', icon: 'car', component: MyspacePage },
       { title: 'Mis millas', icon: 'plane', component: MilesPage },
+      { title: 'Reservar', icon: 'key', component: ReservationsPage }
     ];
 
   }
@@ -80,12 +81,38 @@ export class MyApp {
       this.splashScreen.hide();
       this._pushService.init_notifications();
       this.loadParametros();
+
       if (localStorage.getItem("email") !== '' && localStorage.getItem("serial") !== '') {
         this.login(localStorage.getItem("email"), localStorage.getItem("serial"))
       }
     });
   }
 
+  removeItem() {
+    console.log('removeItem', this.parametros[0].modo_liberacion);
+
+    if (this.parametros[0].modo_liberacion === 'SI') {
+
+      this.pages3.forEach(element => {
+        if (element.title === 'Reservar') {
+          let ind;
+          ind = this.pages3.indexOf(element);
+          this.pages3.splice(ind);
+          console.log('ind', ind);
+        }
+      });
+      this.pages4.forEach(element => {
+        if (element.title === 'Reservar') {
+          let ind;
+          ind = this.pages4.indexOf(element);
+          this.pages4.splice(ind);
+          console.log('ind', ind);
+        }
+      });
+
+    }
+
+  }
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
@@ -138,6 +165,7 @@ export class MyApp {
       data => {
         console.log(data);
         this.parametros = data;
+        this.removeItem();
         sessionStorage.setItem('parametros', JSON.stringify(this.parametros));
       },
       err => {
