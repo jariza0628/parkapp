@@ -32,6 +32,7 @@ import { PushServiceProvider } from '../providers/push-service/push-service';
 import { ReservationsProvider } from '../providers/reservations/reservations';
 import { MilesPage } from '../pages/miles/miles';
 import { ModalJornadaPage } from '../pages/modal-jornada/modal-jornada';
+import { RegistroPage } from '../pages/registro/registro';
 
 enableProdMode();
 @NgModule({
@@ -52,7 +53,8 @@ enableProdMode();
     CarspaceComponent,
     ReservationsPage,
     MilesPage,
-    ModalJornadaPage
+    ModalJornadaPage,
+    RegistroPage
 
   ],
   imports: [
@@ -78,7 +80,8 @@ enableProdMode();
     DetailNoveltyPage,
     ReservationsPage,
     MilesPage,
-    ModalJornadaPage
+    ModalJornadaPage,
+    RegistroPage
 
   ],
   providers: [

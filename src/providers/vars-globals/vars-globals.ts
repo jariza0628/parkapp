@@ -26,7 +26,7 @@ export class VarsGlobalsProvider {
 		this.utilizalugar = 0;
 		this.rol = 0;
 		this.buildingId = 1;
-		this.urlApi = "http://159.203.37.81/api/";
+		this.urlApi = "http://localhost:8888/api/";
 		// this.urlApi = "http://transelcapp.com/api/";
 	}
 	/**

@@ -4,7 +4,9 @@ import { IonicPage, NavController, MenuController, NavParams, LoadingController,
 import { VarsGlobalsProvider } from '../../providers/vars-globals/vars-globals';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
+ 
 import 'rxjs/add/operator/map';
+import { RegistroPage } from '../registro/registro';
 /**
  * Generated class for the LoginPage page.
  *
@@ -92,6 +94,10 @@ export class LoginPage {
 				console.log('player save err', err);
 			}
 		)
+	}
+
+	goToresgister(){
+		this.navCtrl.push(RegistroPage);
 	}
 
 

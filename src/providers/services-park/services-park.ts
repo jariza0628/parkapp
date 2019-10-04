@@ -17,7 +17,8 @@ export class ServicesParkProvider {
 
   constructor(public http: Http) {
     console.log('Hello ServicesParkProvider Provider');
-		this.urlApi = "http://159.203.37.81/api/";
+    this.urlApi = "http://localhost:8888/api/";
+    // this.urlApi = "http://159.203.37.81/api/";
     // this.urlApi = "http://transelcapp.com/api/";
   }
 
@@ -217,5 +218,24 @@ export class ServicesParkProvider {
           )
       }
     );
+  }
+
+ 
+  /**
+   * Crea un nuevo usuario file millas.p
+   * @param name 
+   * @param lastname 
+   * @param user 
+   * @param pass 
+   *    $user = $request->getParam('user');
+    $pass = $request->getParam('password');
+    $nombre = $request->getParam('name');
+    $apellido = $request->getParam('lastname');
+   */
+  saveNewuser(name, lastname, user, pass) {
+    let headers = new Headers;
+    headers.append("content-type", "application/json");
+    return this.http.post(this.urlApi + 'newuser', { user: user, password: pass, name: name, lastname: lastname}, { headers: headers })
+      .map((res: Response) => { console.log(res); return { status: res.status, result: res.json() } });
   }
 }
