@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="azul">
+    <ion-title>Registro</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+
+  <form novalidate [formGroup]="form">
+    <h4 text-center>Registrate pra iniciar sesion y pode utilizar estacionamientos</h4>
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Nombre</ion-label>
+        <ion-input type="text" value="" [(ngModel)]="name" formControlName="name"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label fixed>Apellido</ion-label>
+        <ion-input type="text" value="" [(ngModel)]="lastname" formControlName="lastname"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label fixed>Usuario</ion-label>
+        <ion-input type="text" value="" [(ngModel)]="user" formControlName="user"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label fixed>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password" formControlName="password"></ion-input>
+      </ion-item>
+      <p *ngIf="!form.valid" style="color: red">* Todos lo campos on obligatorios</p>
+
+    </ion-list>
+
+    <button ion-button color="azul" full [disabled]="!form.valid" (click)="saveUser()">Crear usuario</button>
+  </form>
+
+</ion-content>
