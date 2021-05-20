@@ -116,6 +116,7 @@ export class LoginPage {
 			console.log(data)
 			this.VarsGlobals.setUserId(data.id_usuario);
 			this.storage.set('iduser', data.id_usuario);
+			sessionStorage.setItem('pri', data.prioridad);
 			this.VarsGlobals.setbuildingId(1);//solo transelca edificio
 			this.VarsGlobals.setrol(data.rol);
 			sessionStorage.setItem('rol', data.rol);

@@ -374,6 +374,7 @@ export class HomePage {
     alert.present();
   }
   doRefresh(refresher) {
+    this.reservas_actuales = null;
     console.log('Begin async operation', refresher);
 
     setTimeout(() => {

@@ -126,7 +126,7 @@ export class MyspacePage {
     this.parkService.deletecalendar(idcalendar, fecha).subscribe(
       data => {
         console.log(data);
-        if (data.message === 'Eliminado') {
+        if (data.message === 'Eliminado 2') {
           this.showAlertDateDelete();
 
         }

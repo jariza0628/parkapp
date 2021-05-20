@@ -14,8 +14,8 @@ export class ReservationsProvider {
 
   constructor(public http: Http) {
     console.log('Hello ReservationsProvider Provider');
-		this.urlApi = "http://159.203.37.81/api/";
-    //this.urlApi = "http://transelcapp.com/api/";
+    this.urlApi = "http://159.203.37.81/api/";
+    // this.urlApi = "http://192.168.1.7:8888/api/";
   }
   /**
    * get 
@@ -57,9 +57,15 @@ export class ReservationsProvider {
     return this.http.delete(this.urlApi + 'reservations/' + id, options).map(res => res.json())
   }
   newReservation(jornada, id_user) {
+    let pri;
+    if (sessionStorage.getItem('pri')) {
+      pri = sessionStorage.getItem('pri');
+    } else {
+      pri = 3;
+    }
     let headers = new Headers;
     headers.append("content-type", "application/json");
-    return this.http.post(this.urlApi + 'reservations', { jornada: jornada, iduser: id_user }, { headers: headers })
+    return this.http.post(this.urlApi + 'reservations', { jornada: jornada, iduser: id_user, pri: pri }, { headers: headers })
       .map((res: Response) => { console.log(res); return { status: res.status, result: res.json() } });
 
   }
@@ -84,6 +90,6 @@ export class ReservationsProvider {
   /**
    * Traer los epsacion asigandos a mi reserva por id_user
    */
- 
+
 
 }
